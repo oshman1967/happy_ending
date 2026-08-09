@@ -1,1 +1,1061 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Ending — 終活コミュニティ</title>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#1A5C2A; --green-mid:#2E8B5A; --green-light:#E8F5EE;
+  --gold:#C8841A; --lgold:#FDF8E8;
+  --white:#FFFFFF; --cream:#F8FAF8;
+  --dark:#1A1A1A; --mid:#555; --border:#D8E8DC;
+  --shadow:0 4px 24px rgba(26,92,42,0.1);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Zen Kaku Gothic New',sans-serif;background:var(--cream);color:var(--dark);}
 
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,92,42,0.96);backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px;border-bottom:1px solid rgba(200,132,26,0.3);}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;cursor:pointer;}
+.nav-logo-text{font-family:'Cormorant Garamond',serif;font-size:22px;color:#fff;letter-spacing:.06em;}
+.nav-logo-text em{color:var(--gold);font-style:normal;}
+.nav-links{display:flex;gap:8px;align-items:center;}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:10px;background:transparent;border:none;}
+.nav-hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;transition:all .3s;}
+.nav-mobile{display:none;position:fixed;top:64px;left:0;right:0;background:rgba(26,92,42,0.98);padding:20px;flex-direction:column;gap:4px;z-index:99;border-bottom:2px solid rgba(200,132,26,0.4);}
+.nav-mobile.open{display:flex;}
+.nav-mobile a{color:rgba(255,255,255,.9);font-size:17px;text-decoration:none;padding:15px 16px;border-radius:8px;letter-spacing:.04em;cursor:pointer;border-bottom:1px solid rgba(255,255,255,.08);display:block;}
+.nav-mobile a:last-child{border-bottom:none;}
+.nav-mobile .nav-cta-m{background:var(--gold);color:#fff!important;text-align:center;border-radius:8px;margin-top:10px;border-bottom:none!important;font-weight:600;}
+.nav-links a{color:rgba(255,255,255,.75);font-size:14px;text-decoration:none;padding:7px 14px;border-radius:4px;letter-spacing:.05em;transition:all .2s;cursor:pointer;}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.08);}
+.nav-cta{background:var(--gold);color:#fff!important;border-radius:5px;font-weight:500!important;font-size:14px;}
+.nav-cta:hover{background:#a87014!important;}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  position:relative;
+  display:flex;
+  align-items:flex-end;
+  padding-top:64px;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background-size:cover;
+  background-position:center 40%;
+  background-repeat:no-repeat;
+}
+.hero-video{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:center;
+  z-index:0;
+}
+.hero-gradient{
+  position:absolute;inset:0;
+  background:linear-gradient(
+    to bottom,
+    rgba(0,20,5,0.15) 0%,
+    rgba(0,20,5,0.35) 40%,
+    rgba(0,20,5,0.75) 75%,
+    rgba(0,20,5,0.90) 100%
+  );
+}
+.hero-inner{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:60px 48px 80px;display:grid;grid-template-columns:1fr 340px;gap:60px;align-items:flex-end;width:100%;}
+.hero-left{}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.4);color:#fff;font-size:10px;letter-spacing:.18em;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:28px;font-weight:500;}
+.hero-title{font-family:'Shippori Mincho',serif;font-size:clamp(36px,4vw,58px);font-weight:500;color:#fff;line-height:1.25;margin-bottom:8px;}
+.hero-title em{font-style:normal;color:var(--gold);}
+.hero-catch{font-family:'Shippori Mincho',serif;font-size:17px;color:rgba(255,255,255,.9);margin-bottom:16px;font-weight:400;line-height:1.9;}
+.hero-desc{font-size:16px;color:rgba(255,255,255,.75);line-height:2.0;margin-bottom:32px;max-width:480px;}
+.hero-btns{display:flex;gap:14px;margin-bottom:40px;}
+.btn-primary{background:var(--gold);color:#fff;border:none;padding:14px 32px;border-radius:6px;font-family:'Zen Kaku Gothic New',sans-serif;font-size:15px;font-weight:500;cursor:pointer;letter-spacing:.06em;box-shadow:0 4px 16px rgba(200,132,26,.35);transition:all .25s;text-decoration:none;display:inline-block;}
+.btn-primary:hover{background:#a87014;transform:translateY(-1px);}
+.btn-secondary{background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.5);color:#fff;padding:14px 24px;border-radius:6px;font-size:15px;cursor:pointer;transition:all .25s;letter-spacing:.05em;}
+.btn-secondary:hover{background:rgba(255,255,255,.25);}
+.hero-badges{display:flex;gap:20px;flex-wrap:wrap;}
+.hero-badge{display:flex;align-items:center;gap:8px;font-size:14px;color:rgba(255,255,255,.7);}
+.hero-badge-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.6);}
+.hero-right{position:relative;align-self:flex-end;}
+.hero-photo{display:none;}
+.hero-photo-badge{position:absolute;bottom:24px;left:24px;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border-radius:12px;padding:16px 20px;box-shadow:0 8px 32px rgba(0,0,0,.15);}
+.hpb-title{font-family:'Shippori Mincho',serif;font-size:13px;color:var(--green);font-weight:600;margin-bottom:4px;}
+.hpb-sub{font-size:11px;color:var(--mid);}
+.hero-price-card{position:relative;background:#fff;border-radius:16px;padding:24px 28px;box-shadow:0 12px 40px rgba(0,0,0,.25);border:none;min-width:200px;}
+.hpc-label{font-size:10px;color:var(--mid);letter-spacing:.08em;margin-bottom:6px;}
+.hpc-price{font-family:'Cormorant Garamond',serif;font-size:38px;color:var(--green);font-weight:300;line-height:1;}
+.hpc-unit{font-size:12px;color:var(--mid);}
+.hpc-note{font-size:10px;color:#aaa;margin-top:4px;}
+
+/* ── FEATURES BAR ── */
+.features-bar{background:var(--green);padding:48px;}
+.features-bar-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2px;}
+.fb-item{background:rgba(255,255,255,.06);padding:32px 24px;text-align:center;transition:background .2s;}
+.fb-item:hover{background:rgba(255,255,255,.1);}
+.fb-num{font-family:'Cormorant Garamond',serif;font-size:42px;color:#fff;font-weight:300;line-height:1;}
+.fb-unit{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--gold);}
+.fb-desc{font-size:13px;color:rgba(255,255,255,.5);margin-top:8px;line-height:1.7;letter-spacing:.04em;}
+
+/* ── SECTION BASE ── */
+.section{padding:96px 48px;}
+.sec-inner{max-width:1200px;margin:0 auto;}
+.sec-eyebrow{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--green-mid);margin-bottom:12px;font-weight:500;}
+.sec-title{font-family:'Shippori Mincho',serif;font-size:clamp(28px,3.5vw,44px);font-weight:500;color:var(--green);line-height:1.3;margin-bottom:14px;}
+.sec-title em{font-style:normal;color:var(--gold);}
+.sec-desc{font-size:16px;color:var(--mid);line-height:2.0;max-width:540px;}
+
+/* ── BULLETIN ── */
+.bulletin{background:var(--cream);}
+.board-layout{display:grid;grid-template-columns:240px 1fr;gap:32px;margin-top:52px;}
+.board-sidebar-title{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--mid);margin-bottom:14px;font-weight:500;}
+.board-cat{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:8px;cursor:pointer;transition:all .2s;margin-bottom:3px;}
+.board-cat:hover,.board-cat.active{background:var(--green-light);}
+.board-cat.active .bc-name{color:var(--green);font-weight:500;}
+.bc-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.bc-name{font-size:15px;color:var(--mid);}
+.bc-count{margin-left:auto;font-size:10px;color:rgba(0,0,0,.3);background:rgba(0,0,0,.05);padding:2px 8px;border-radius:8px;}
+.board-new{background:var(--green);border-radius:10px;padding:16px 20px;display:flex;align-items:center;gap:16px;margin-bottom:16px;cursor:pointer;border:none;width:100%;text-align:left;transition:background .2s;}
+.board-new:hover{background:#0F3A1A;}
+.board-new-placeholder{font-size:15px;color:rgba(255,255,255,.5);flex:1;}
+.board-new-btn{background:var(--gold);color:#fff;padding:8px 18px;border-radius:6px;font-size:12px;font-weight:500;white-space:nowrap;}
+.thread{background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px 24px;margin-bottom:10px;cursor:pointer;transition:all .2s;}
+.thread:hover{border-color:var(--green-mid);box-shadow:0 4px 16px rgba(26,92,42,.08);}
+.thread-head{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+.thread-av{width:36px;height:36px;border-radius:50%;flex-shrink:0;object-fit:cover;}
+.thread-av-placeholder{width:36px;height:36px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:16px;}
+.thread-author{font-size:14px;color:var(--mid);font-weight:500;}
+.thread-time{font-size:12px;color:#bbb;margin-top:1px;}
+.thread-cat{font-size:12px;padding:3px 12px;border-radius:10px;background:var(--green-light);color:var(--green-mid);border:1px solid rgba(46,139,90,.2);}
+.thread-title{font-family:'Shippori Mincho',serif;font-size:17px;color:var(--green);font-weight:600;margin-bottom:7px;line-height:1.65;}
+.thread-preview{font-size:14px;color:var(--mid);line-height:1.85;}
+.thread-foot{display:flex;gap:18px;margin-top:12px;}
+.thread-stat{font-size:13px;color:#bbb;}
+
+/* ── COMMUNITY ── */
+.community{background:var(--white);}
+.community-layout{display:flex;flex-direction:column;gap:40px;margin-top:52px;}
+.comm-photo-section{position:relative;border-radius:20px;overflow:hidden;height:480px;width:100%;}
+.comm-photo{width:100%;height:100%;object-fit:cover;}
+.comm-photo-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,92,42,.8) 0%,transparent 60%);}
+.comm-photo-text{position:absolute;bottom:36px;left:36px;right:36px;}
+.comm-photo-title{font-family:'Shippori Mincho',serif;font-size:28px;color:#fff;font-weight:500;margin-bottom:10px;}
+.comm-photo-desc{font-size:14px;color:rgba(255,255,255,.8);line-height:1.9;}
+.comm-posts{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.comm-card{background:var(--cream);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:12px;transition:all .2s;}
+.comm-card:hover{border-color:var(--green-mid);}
+.comm-card-head{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+.comm-av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.comm-name{font-size:14px;color:var(--dark);font-weight:500;}
+.comm-time{font-size:12px;color:#bbb;margin-top:1px;}
+.comm-text{font-size:15px;color:var(--mid);line-height:1.95;}
+.comm-tags{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;}
+.comm-tag{font-size:12px;padding:3px 12px;border-radius:10px;background:var(--green-light);color:var(--green-mid);border:1px solid rgba(46,139,90,.2);}
+.comm-lock{margin-top:16px;background:var(--green-light);border-radius:10px;padding:20px;text-align:center;border:1px solid rgba(46,139,90,.2);}
+.comm-lock p{font-size:15px;color:var(--green);margin-bottom:14px;}
+
+/* ── SEMINAR ── */
+.seminar{background:var(--cream);}
+.seminar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px;}
+.seminar-card{background:#fff;border-radius:16px;overflow:hidden;border:1px solid var(--border);transition:all .25s;box-shadow:var(--shadow);}
+.seminar-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(26,92,42,.15);}
+.seminar-photo{height:320px;width:100%;object-fit:cover;}
+.seminar-body{padding:22px;}
+.seminar-type{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--green-mid);margin-bottom:6px;font-weight:500;}
+.seminar-title{font-family:'Shippori Mincho',serif;font-size:18px;color:var(--green);font-weight:600;margin-bottom:8px;line-height:1.6;}
+.seminar-detail{font-size:14px;color:var(--mid);line-height:1.85;}
+.seminar-badge{display:inline-block;margin-top:8px;font-size:10px;padding:3px 10px;border-radius:10px;background:var(--green-light);color:var(--green-mid);border:1px solid rgba(46,139,90,.2);}
+.seminar-foot{padding:14px 22px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+.seminar-price{font-size:14px;color:var(--mid);}
+.seminar-price strong{color:var(--green);font-weight:700;}
+.seminar-btn{font-size:13px;padding:8px 18px;border-radius:6px;border:1.5px solid var(--green-mid);color:var(--green-mid);background:transparent;cursor:pointer;transition:all .2s;font-family:'Zen Kaku Gothic New',sans-serif;}
+.seminar-btn:hover{background:var(--green-mid);color:#fff;}
+
+/* ── PLANS ── */
+.plans{background:var(--white);}
+.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px;}
+.plan-card{border-radius:20px;padding:40px 32px;position:relative;transition:transform .25s;}
+.plan-card:hover{transform:translateY(-4px);}
+.plan-free{background:var(--cream);border:1px solid var(--border);}
+.plan-paid{background:var(--green);box-shadow:0 20px 60px rgba(26,92,42,.25);}
+.plan-opt{background:var(--lgold);border:1px solid rgba(200,132,26,.2);}
+.plan-hot{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:#fff;font-size:9px;letter-spacing:.12em;padding:4px 18px;border-radius:20px;white-space:nowrap;font-weight:700;}
+.plan-name{font-family:'Shippori Mincho',serif;font-size:15px;font-weight:600;text-align:center;margin-bottom:8px;letter-spacing:.05em;}
+.plan-free .plan-name,.plan-opt .plan-name{color:var(--mid);}
+.plan-paid .plan-name{color:rgba(255,255,255,.65);}
+.plan-price{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:300;line-height:1;text-align:center;margin-bottom:6px;}
+.plan-free .plan-price{color:var(--green);}
+.plan-paid .plan-price{color:#fff;}
+.plan-opt .plan-price{color:var(--gold);font-size:36px;padding-top:8px;}
+.plan-period{font-size:11px;text-align:center;margin-bottom:28px;}
+.plan-free .plan-period,.plan-opt .plan-period{color:var(--mid);}
+.plan-paid .plan-period{color:rgba(255,255,255,.45);}
+.plan-feats{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px;}
+.plan-feats li{font-size:15px;display:flex;gap:8px;align-items:flex-start;line-height:1.7;}
+.plan-free .plan-feats li,.plan-opt .plan-feats li{color:var(--mid);}
+.plan-paid .plan-feats li{color:rgba(255,255,255,.8);}
+.plan-btn{width:100%;padding:14px;border-radius:8px;font-size:15px;font-family:'Zen Kaku Gothic New',sans-serif;font-weight:500;cursor:pointer;border:none;transition:all .2s;letter-spacing:.05em;}
+.pbn-gold{background:var(--gold);color:#fff;}
+.pbn-gold:hover{background:#a87014;}
+.pbn-outline{background:transparent;border:1.5px solid var(--border);color:var(--mid);}
+.pbn-outline:hover{border-color:var(--green-mid);color:var(--green);}
+.pbn-ghost{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.2);}
+.pbn-ghost:hover{background:rgba(255,255,255,.2);}
+
+/* ── TEMPLATE ── */
+.template{background:var(--cream);}
+.template-layout{display:flex;flex-direction:column;gap:48px;margin-top:52px;}
+.template-photo{width:100%;height:500px;object-fit:cover;border-radius:20px;box-shadow:0 20px 60px rgba(26,92,42,.2);object-position:center 30%;}
+.template-content-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;}
+.template-content{}
+.template-section{margin-bottom:28px;}
+.template-section-title{font-family:'Shippori Mincho',serif;font-size:16px;color:var(--green);font-weight:600;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--green-light);}
+.template-item{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);}
+.template-item:last-child{border-bottom:none;}
+.ti-badge{font-size:9px;padding:2px 8px;border-radius:8px;font-weight:700;flex-shrink:0;}
+.ti-free{background:var(--green-light);color:var(--green-mid);}
+.ti-paid{background:var(--lgold);color:var(--gold);}
+.ti-name{font-size:15px;color:var(--dark);}
+
+/* ── FOOTER ── */
+.footer{position:relative;overflow:hidden;}
+.footer-photo{width:100%;height:420px;object-fit:cover;object-position:center 30%;display:block;}
+.footer-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,40,15,.92) 0%,rgba(10,40,15,.7) 60%,rgba(10,40,15,.5) 100%);}
+.footer-content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:48px;}
+.footer-inner{max-width:1200px;margin:0 auto;width:100%;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:24px;color:#fff;margin-bottom:10px;}
+.footer-logo em{color:var(--gold);font-style:normal;}
+.footer-tagline{font-family:'Shippori Mincho',serif;font-size:15px;color:rgba(255,255,255,.45);line-height:1.95;max-width:240px;}
+.footer-col h4{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:14px;}
+.footer-col a{display:block;font-size:14px;color:rgba(255,255,255,.55);text-decoration:none;margin-bottom:11px;cursor:pointer;transition:color .2s;}
+.footer-col a:hover{color:#fff;}
+.footer-bottom{position:absolute;bottom:0;left:0;right:0;border-top:1px solid rgba(255,255,255,.08);padding:14px 48px;display:flex;justify-content:space-between;}
+.footer-copy{font-size:10px;color:rgba(255,255,255,.2);}
+
+/* ── MODAL ── */
+.modal-overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,30,10,.85);backdrop-filter:blur(10px);align-items:center;justify-content:center;}
+.modal-overlay.open{display:flex;}
+.modal{background:#fff;border-radius:24px;width:100%;max-width:460px;margin:20px;padding:48px 40px;position:relative;box-shadow:0 40px 100px rgba(0,0,0,.25);}
+.modal-x{position:absolute;top:18px;right:18px;background:var(--cream);border:none;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:14px;color:var(--mid);display:flex;align-items:center;justify-content:center;}
+.modal-title{font-family:'Shippori Mincho',serif;font-size:26px;color:var(--green);margin-bottom:6px;font-weight:500;}
+.modal-sub{font-size:15px;color:var(--mid);margin-bottom:28px;}
+.form-g{margin-bottom:16px;}
+.form-label{font-size:13px;color:var(--mid);margin-bottom:6px;display:block;letter-spacing:.05em;}
+.form-input{width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:8px;font-family:'Zen Kaku Gothic New',sans-serif;font-size:16px;color:var(--dark);background:var(--cream);outline:none;transition:border .2s;}
+.form-input:focus{border-color:var(--green-mid);background:#fff;}
+.form-submit{width:100%;padding:14px;background:var(--green);color:#fff;border:none;border-radius:8px;font-size:15px;font-family:'Zen Kaku Gothic New',sans-serif;font-weight:500;cursor:pointer;letter-spacing:.06em;margin-top:6px;transition:background .2s;}
+.form-submit:hover{background:#0F3A1A;}
+.form-submit.gold{background:var(--gold);}
+.form-submit.gold:hover{background:#a87014;}
+.modal-hint{background:var(--green-light);border:1px solid rgba(46,139,90,.2);border-radius:10px;padding:14px 18px;margin-top:18px;display:flex;gap:10px;}
+.mh-text{font-size:14px;color:var(--green);line-height:1.85;}
+.mh-text strong{display:block;font-size:15px;color:var(--green);margin-bottom:4px;}
+.mh-text a{color:var(--green-mid);text-decoration:none;cursor:pointer;}
+.modal-login{text-align:center;margin-top:16px;font-size:12px;color:var(--mid);}
+.modal-login a{color:var(--green-mid);text-decoration:none;}
+
+@media(max-width:768px){
+  /* ナビ */
+  #nav-desktop{display:none!important;}
+  .nav-hamburger{display:flex!important;}
+  nav{padding:0 16px;}
+  
+  /* ヒーロー */
+  .hero-inner{grid-template-columns:1fr!important;padding:40px 20px 60px!important;gap:24px;}
+  .hero-right{display:none!important;}
+  .hero-title{font-size:36px!important;white-space:normal!important;line-height:1.3!important;}
+  .hero-catch{font-size:16px!important;}
+  .hero-desc{font-size:15px!important;}
+  .hero-btns{flex-direction:column!important;gap:12px!important;}
+  .btn-primary,.btn-secondary{width:100%!important;text-align:center!important;box-sizing:border-box!important;}
+  .hero-badges{flex-direction:column!important;gap:8px!important;}
+  .hero-eyebrow{font-size:11px!important;}
+  
+  /* 統計 */
+  .features-bar{padding:32px 16px!important;}
+  .features-bar-inner{grid-template-columns:1fr 1fr!important;}
+  .fb-num{font-size:30px!important;}
+  .fb-desc{font-size:12px!important;}
+  
+  /* 共通セクション */
+  .section{padding:52px 16px!important;}
+  .sec-title{font-size:26px!important;}
+  .sec-desc{font-size:15px!important;}
+  
+  /* 掲示板 */
+  .board-layout{grid-template-columns:1fr!important;}
+  .board-sidebar{display:flex!important;flex-wrap:wrap!important;gap:8px!important;margin-bottom:20px!important;}
+  .board-cat{padding:8px 12px!important;border-radius:20px!important;}
+  .bc-count{display:none!important;}
+  .board-new-placeholder{font-size:14px!important;}
+  .thread-title{font-size:15px!important;}
+  .thread-preview{font-size:13px!important;}
+  
+  /* コミュニティ */
+  .community-layout{flex-direction:column!important;}
+  .comm-photo-section{height:280px!important;width:100%!important;}
+  .comm-posts{display:flex!important;flex-direction:column!important;gap:16px!important;}
+  .comm-text{font-size:14px!important;}
+  
+  /* セミナー */
+  .seminar-grid{grid-template-columns:1fr!important;}
+  .seminar-photo{height:200px!important;}
+  .seminar-archive{grid-template-columns:1fr!important;padding:32px 20px!important;}
+  
+  /* プラン */
+  .plans-grid{grid-template-columns:1fr!important;}
+  .plan-price{font-size:44px!important;}
+  
+  /* テンプレート */
+  .template-layout{flex-direction:column!important;}
+  .template-photo{height:240px!important;}
+  .template-content-grid{grid-template-columns:1fr!important;gap:24px!important;}
+  .ti-name{font-size:14px!important;}
+  
+  /* イベント */
+  .events-grid{grid-template-columns:1fr!important;}
+  .ev-tab{font-size:13px!important;padding:8px 14px!important;}
+  .ev-title{font-size:15px!important;}
+  
+  /* フッター */
+  .footer-photo{height:560px!important;}
+  .footer-content{padding:28px 16px!important;}
+  .footer-inner{grid-template-columns:1fr!important;gap:24px!important;}
+  .footer-bottom{padding:12px 16px!important;flex-direction:column!important;gap:4px!important;text-align:center!important;}
+  
+  /* モーダル */
+  .modal{padding:32px 20px!important;margin:10px!important;border-radius:16px!important;}
+  .modal-title{font-size:24px!important;}
+}
+@media(max-width:900px){
+  nav{padding:0 20px;}
+  .hero-inner,.community-layout,.template-layout,.footer-inner{grid-template-columns:1fr;}
+  .features-bar-inner,.seminar-grid,.plans-grid{grid-template-columns:1fr;}
+  .board-layout{grid-template-columns:1fr;}
+  .hero-price-card{display:none;}
+  .section{padding:60px 20px;}
+  .features-bar{padding:40px 20px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo" onclick="window.scrollTo(0,0)">
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+      <circle cx="16" cy="16" r="14.5" stroke="#C8841A" stroke-width="1.2"/>
+      <path d="M8 22 Q16 8 24 22" stroke="#90E8A0" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <circle cx="16" cy="12" r="3" fill="#C8841A" opacity=".9"/>
+    </svg>
+    <span class="nav-logo-text">Happy<em>Ending</em></span>
+  </div>
+  <div class="nav-links" id="nav-desktop">
+    <a onclick="showSection('bulletin')">掲示板</a>
+    <a onclick="showSection('community')">コミュニティ</a>
+    <a onclick="showSection('seminar')">セミナー</a>
+    <a onclick="showSection('template')">テンプレート</a>
+    <a onclick="showSection('events')">イベント</a>
+    <a onclick="openModal('register')">無料登録</a>
+    <a class="nav-cta" onclick="openModal('upgrade')">有料会員になる</a>
+  </div>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a onclick="showSection('bulletin');closeMenu()">掲示板</a>
+  <a onclick="showSection('community');closeMenu()">コミュニティ</a>
+  <a onclick="showSection('seminar');closeMenu()">セミナー</a>
+  <a onclick="showSection('template');closeMenu()">テンプレート</a>
+  <a onclick="showSection('events');closeMenu()">イベント</a>
+  <a onclick="openModal('register');closeMenu()">無料登録</a>
+  <a class="nav-cta-m" onclick="openModal('upgrade');closeMenu()">有料会員になる</a>
+</div>
+
+<!-- ══ HERO ══ -->
+<section class="hero" id="hero">
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-gradient"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow">✦ 終活コミュニティプラットフォーム</div>
+      <h1 class="hero-title">人生の<em>締めくくり</em>を、<br>もっと自分らしく。</h1>
+      <p class="hero-catch">終活は「終わり」ではなく、今をより豊かに生きるための準備。</p>
+      <p class="hero-desc">終活は孤独じゃない。同じ悩みを持つ仲間と掲示板でつながり、信頼できる専門家に出会う場所。掲示板は全員無料、有料会員はセミナー・プロ記事・1on1相談が使えます。</p>
+      <div class="hero-btns">
+        <a class="btn-primary" onclick="openModal('register')">無料で始める</a>
+        <button class="btn-secondary" onclick="showSection('bulletin')">掲示板を見る</button>
+      </div>
+      <div class="hero-badges">
+        <div class="hero-badge"><div class="hero-badge-dot"></div>掲示板・AI記事は完全無料</div>
+        <div class="hero-badge"><div class="hero-badge-dot"></div>有料会員 ¥980/月</div>
+        <div class="hero-badge"><div class="hero-badge-dot"></div>30日間無料トライアル</div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <img id="hero-photo" class="hero-photo" src="" alt="夕景" onerror="this.style.background='linear-gradient(135deg,#E8F5EE,#C8E8C0)'">
+
+      <div class="hero-price-card">
+        <div class="hpc-label">有料会員</div>
+        <div><span class="hpc-price">¥980</span><span class="hpc-unit">/月</span></div>
+        <div class="hpc-note">年払い ¥9,800（2ヶ月お得）</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FEATURES BAR ══ -->
+<div class="features-bar">
+  <div class="features-bar-inner">
+    <div class="fb-item">
+      <div class="fb-num">720<span class="fb-unit">本</span></div>
+      <div class="fb-desc">年間AI生成記事<br>全文無料公開</div>
+    </div>
+    <div class="fb-item">
+      <div class="fb-num">6<span class="fb-unit">カテゴリ</span></div>
+      <div class="fb-desc">終活掲示板<br>全員が投稿・返信可</div>
+    </div>
+    <div class="fb-item">
+      <div class="fb-num">¥980</div>
+      <div class="fb-desc">有料会員月額<br>セミナー無料参加</div>
+    </div>
+    <div class="fb-item">
+      <div class="fb-num">22<span class="fb-unit">回</span></div>
+      <div class="fb-desc">年間セミナー開催<br>東京・大阪・オンライン</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ BULLETIN ══ -->
+<section class="section bulletin" id="bulletin">
+  <div class="sec-inner">
+    <div class="sec-eyebrow">Bulletin Board</div>
+    <h2 class="sec-title">終活<em>掲示板</em></h2>
+    <p class="sec-desc">同じ悩みを持つ仲間に質問・相談できる場所。投稿・返信は全員無料です。</p>
+    <div class="board-layout">
+      <div>
+        <div class="board-sidebar-title">カテゴリ</div>
+        <div class="board-cat active" onclick="setActive(this)"><div class="bc-dot" style="background:#2E8B5A"></div><span class="bc-name">すべて</span><span class="bc-count">1,284</span></div>
+        <div class="board-cat" onclick="setActive(this)"><div class="bc-dot" style="background:#5AAA70"></div><span class="bc-name">介護・施設</span><span class="bc-count">412</span></div>
+        <div class="board-cat" onclick="setActive(this)"><div class="bc-dot" style="background:#C8841A"></div><span class="bc-name">葬儀・お墓</span><span class="bc-count">287</span></div>
+        <div class="board-cat" onclick="setActive(this)"><div class="bc-dot" style="background:#2E8B5A"></div><span class="bc-name">保険・資産</span><span class="bc-count">198</span></div>
+        <div class="board-cat" onclick="setActive(this)"><div class="bc-dot" style="background:#5AAA70"></div><span class="bc-name">エンディングノート</span><span class="bc-count">173</span></div>
+        <div class="board-cat" onclick="setActive(this)"><div class="bc-dot" style="background:#C8841A"></div><span class="bc-name">デジタル終活</span><span class="bc-count">134</span></div>
+        <div class="board-cat" onclick="setActive(this)"><div class="bc-dot" style="background:#2E8B5A"></div><span class="bc-name">子世代・家族</span><span class="bc-count">80</span></div>
+      </div>
+      <div>
+        <button class="board-new" onclick="openModal('register')">
+          <span class="board-new-placeholder">💬 あなたの悩みや質問を投稿する...</span>
+          <span class="board-new-btn">スレッドを立てる</span>
+        </button>
+        <div class="thread">
+          <div class="thread-head">
+            <div class="thread-av-placeholder" style="background:#E8F5EE;">👩</div>
+            <div><div class="thread-author">恵子さん（68歳・東京）</div><div class="thread-time">2時間前</div></div>
+            <span class="thread-cat">介護・施設</span>
+          </div>
+          <div class="thread-title">特養への申し込みから入居まで、実際どのくらい待ちましたか？</div>
+          <div class="thread-preview">夫が認知症と診断され、在宅介護に限界を感じています。特養を申し込みたいのですが...</div>
+          <div class="thread-foot"><span class="thread-stat">❤️ 24</span><span class="thread-stat">💬 18件の返信</span><span class="thread-stat">👁 342 views</span></div>
+        </div>
+        <div class="thread">
+          <div class="thread-head">
+            <div class="thread-av-placeholder" style="background:#FDF8E8;">👨</div>
+            <div><div class="thread-author">健一さん（48歳・大阪）</div><div class="thread-time">5時間前</div></div>
+            <span class="thread-cat">葬儀・お墓</span>
+          </div>
+          <div class="thread-title">家族葬の費用、実際にかかった金額を教えてください</div>
+          <div class="thread-preview">父の終活を一緒に考えています。「家族葬なら安い」と聞きましたが、実際には後から費用がかさんだという話も...</div>
+          <div class="thread-foot"><span class="thread-stat">❤️ 31</span><span class="thread-stat">💬 25件の返信</span><span class="thread-stat">👁 518 views</span></div>
+        </div>
+        <div class="thread">
+          <div class="thread-head">
+            <div class="thread-av-placeholder" style="background:#E8F5EE;">👩</div>
+            <div><div class="thread-author">美穂さん（55歳・福岡）</div><div class="thread-time">昨日</div></div>
+            <span class="thread-cat">デジタル終活</span>
+          </div>
+          <div class="thread-title">LINEやFacebookのアカウント、死後はどうなるか調べてみました</div>
+          <div class="thread-preview">孫にLINEのことを相談したら「追悼アカウントにできる」と教えてくれました...</div>
+          <div class="thread-foot"><span class="thread-stat">❤️ 42</span><span class="thread-stat">💬 33件の返信</span><span class="thread-stat">👁 891 views</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ COMMUNITY ══ -->
+<section class="section community" id="community">
+  <div class="sec-inner">
+    <div class="sec-eyebrow">Community</div>
+    <h2 class="sec-title">終活の悩みを<br>一人で<em>抱えないで</em></h2>
+    <div class="community-layout">
+      <div class="comm-photo-section">
+        <img id="comm-photo" class="comm-photo" src="" alt="夕焼けの海">
+        <div class="comm-photo-overlay"></div>
+        <div class="comm-photo-text">
+          <div class="comm-photo-title">同じ境遇の仲間とつながる</div>
+          <div class="comm-photo-desc">介護・葬儀・相続・デジタル終活…<br>テーマ別グループで深く交流できます。</div>
+        </div>
+      </div>
+      <div class="comm-posts">
+        <div class="comm-card">
+          <div class="comm-card-head">
+            <div class="comm-av" style="background:#E8F5EE;">👩</div>
+            <div><div class="comm-name">恵子さん（68歳・東京）</div><div class="comm-time">2時間前</div></div>
+          </div>
+          <div class="comm-text">エンディングノートを書き始めましたが、デジタル資産の欄で手が止まってしまいました。LINEのやり取りってどうしたらいいんでしょう？</div>
+          <div class="comm-tags"><span class="comm-tag">エンディングノート</span><span class="comm-tag">デジタル終活</span></div>
+        </div>
+        <div class="comm-card">
+          <div class="comm-card-head">
+            <div class="comm-av" style="background:#FDF8E8;">👨</div>
+            <div><div class="comm-name">健一さん（48歳・大阪）</div><div class="comm-time">5時間前</div></div>
+          </div>
+          <div class="comm-text">両親が70代になり相続のことが気になっています。実家の土地がかなり広く、兄弟3人でどう分けるかが課題です。</div>
+          <div class="comm-tags"><span class="comm-tag">相続</span><span class="comm-tag">親との話し合い</span></div>
+        </div>
+        <div class="comm-lock">
+          <p>🔒 グループへの投稿・参加は有料会員限定です</p>
+          <button class="btn-primary" onclick="openModal('upgrade')">¥980/月で参加する</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SEMINAR ══ -->
+<section class="section seminar" id="seminar">
+  <div class="sec-inner">
+    <div class="sec-eyebrow">Seminar</div>
+    <h2 class="sec-title">プロから直接学ぶ<br><em>終活セミナー</em></h2>
+    <p class="sec-desc">有料会員は全セミナーに無料参加＋アーカイブ視聴可。監修者が顔出しで登壇。</p>
+    <div class="seminar-grid">
+      <div class="seminar-card">
+        <img id="seminar-photo1" class="seminar-photo" src="" alt="オンラインセミナー">
+        <div class="seminar-body">
+          <div class="seminar-type">Online · Zoom</div>
+          <div class="seminar-title">オンラインセミナー<br>月1回・先着50〜100名</div>
+          <div class="seminar-detail">弁護士・FP・葬儀師などのプロが顔出しで登壇。毎月テーマを変えて開催。</div>
+          <span class="seminar-badge">Y1〜 毎月開催</span>
+        </div>
+        <div class="seminar-foot">
+          <div class="seminar-price">有料会員 <strong>無料</strong></div>
+          <button class="seminar-btn" onclick="openModal('upgrade')">参加する</button>
+        </div>
+      </div>
+      <div class="seminar-card">
+        <img id="seminar-photo2" class="seminar-photo" src="" alt="東京オフライン">
+        <div class="seminar-body">
+          <div class="seminar-type">Tokyo · Offline</div>
+          <div class="seminar-title">東京オフラインセミナー<br>隔月・自社会場</div>
+          <div class="seminar-detail">自社会場で開催。専門家との直接交流も可能。少人数制で深い学びを提供。</div>
+          <span class="seminar-badge">Y1〜 隔月開催</span>
+        </div>
+        <div class="seminar-foot">
+          <div class="seminar-price">有料会員 <strong>無料</strong> / 非会員 ¥3,000〜</div>
+          <button class="seminar-btn" onclick="openModal('upgrade')">参加する</button>
+        </div>
+      </div>
+      <div class="seminar-card">
+        <img id="seminar-photo3" class="seminar-photo" src="" alt="大阪オフライン">
+        <div class="seminar-body">
+          <div class="seminar-type">Osaka · Offline</div>
+          <div class="seminar-title">大阪オフラインセミナー<br>年4回・貸会議室</div>
+          <div class="seminar-detail">Y2より大阪でも開催。関西エリアの有料会員向け。東京と同水準のプロが登壇。</div>
+          <span class="seminar-badge">Y2〜 年4回</span>
+        </div>
+        <div class="seminar-foot">
+          <div class="seminar-price">有料会員 <strong>無料</strong> / 非会員 ¥3,000〜</div>
+          <button class="seminar-btn">Y2から開始</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PLANS ══ -->
+<section class="section plans">
+  <div class="sec-inner">
+    <div style="text-align:center;max-width:540px;margin:0 auto;">
+      <div class="sec-eyebrow">Membership</div>
+      <h2 class="sec-title">まずは<em>無料</em>から<br>始められる</h2>
+      <p class="sec-desc" style="margin:0 auto;">掲示板は全員無料。有料会員（¥980/月）になるとセミナー・プロ記事・コミュニティが開放されます。</p>
+    </div>
+    <div class="plans-grid">
+      <div class="plan-card plan-free">
+        <div class="plan-name">無料会員</div>
+        <div class="plan-price">¥0</div>
+        <div class="plan-period">ずっと無料</div>
+        <ul class="plan-feats">
+          <li>✅ 掲示板 投稿・返信</li>
+          <li>✅ AI記事 全文</li>
+          <li>✅ テンプレート基本版DL</li>
+          <li>✅ デジタル終活チェックリスト</li>
+          <li><span style="opacity:.3">❌</span> <span style="opacity:.45">セミナー参加</span></li>
+          <li><span style="opacity:.3">❌</span> <span style="opacity:.45">専門家監修記事</span></li>
+        </ul>
+        <button class="plan-btn pbn-outline" onclick="openModal('register')">無料で登録</button>
+      </div>
+      <div class="plan-card plan-paid">
+        <div class="plan-hot">おすすめ</div>
+        <div class="plan-name">有料会員</div>
+        <div class="plan-price">¥980</div>
+        <div class="plan-period">/月（年払い ¥9,800）</div>
+        <ul class="plan-feats">
+          <li>✅ 掲示板（無料と同じ）</li>
+          <li>✅ 専門家監修記事 読み放題</li>
+          <li>✅ セミナー 無料参加＋アーカイブ</li>
+          <li>✅ テンプレート詳細版DL</li>
+          <li>✅ コミュニティグループ参加</li>
+          <li>✅ 専門家への問い合わせ</li>
+        </ul>
+        <button class="plan-btn pbn-gold" onclick="openModal('upgrade')">30日間無料で始める</button>
+      </div>
+      <div class="plan-card plan-opt">
+        <div class="plan-name">別途課金オプション</div>
+        <div class="plan-price">別途</div>
+        <div class="plan-period">必要な時に追加</div>
+        <ul class="plan-feats">
+          <li>🎯 1on1相談 ¥5,000〜/30分</li>
+          <li>🏛️ オフラインセミナー ¥3,000〜</li>
+          <li>📄 テンプレート単品 ¥500〜</li>
+        </ul>
+        <button class="plan-btn pbn-outline">詳細を見る</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TEMPLATE ══ -->
+<section class="section template" id="template">
+  <div class="sec-inner">
+    <div class="sec-eyebrow">Templates</div>
+    <h2 class="sec-title">出版社だからできる<br><em>信頼のテンプレート</em></h2>
+    <div class="template-layout">
+      <img id="tmpl-photo" class="template-photo" src="" alt="富士山と花畑">
+      <div class="template-content-grid"><div class="template-content">
+        <div class="template-section">
+          <div class="template-section-title">無料DL（メール登録で入手）</div>
+          <div class="template-item"><span class="ti-badge ti-free">無料</span><span class="ti-name">エンディングノート（基本版PDF）</span></div>
+          <div class="template-item"><span class="ti-badge ti-free">無料</span><span class="ti-name">デジタル終活チェックリスト</span></div>
+          <div class="template-item"><span class="ti-badge ti-free">無料</span><span class="ti-name">介護施設見学チェックシート</span></div>
+          <div class="template-item"><span class="ti-badge ti-free">無料</span><span class="ti-name">葬儀社比較シート</span></div>
+        </div>
+        <div class="template-section">
+          <div class="template-section-title">有料会員限定DL（監修者名入り）</div>
+          <div class="template-item"><span class="ti-badge ti-paid">有料</span><span class="ti-name">遺言書テンプレート（弁護士監修）</span></div>
+          <div class="template-item"><span class="ti-badge ti-paid">有料</span><span class="ti-name">エンディングノート（詳細版）</span></div>
+          <div class="template-item"><span class="ti-badge ti-paid">有料</span><span class="ti-name">相続手続きフローチャート</span></div>
+          <div class="template-item"><span class="ti-badge ti-paid">有料</span><span class="ti-name">介護費用シミュレーションシート</span></div>
+        </div>
+        <button class="btn-primary" onclick="openModal('register')">無料テンプレートをDLする</button>
+      </div>
+      <div style="display:flex;flex-direction:column;justify-content:center;gap:20px;padding:20px;background:var(--green-light);border-radius:16px;">
+        <div style="font-family:'Shippori Mincho',serif;font-size:22px;color:var(--green);font-weight:500;">出版社ならではの<br>信頼のテンプレート</div>
+        <p style="font-size:14px;color:var(--mid);line-height:1.9;">監修者の名前入りで信頼性を担保。弁護士・FP・葬儀師が監修した「使えるテンプレート」を展開。他のWebサービスには真似できない差別化です。</p>
+        <div style="font-family:'Shippori Mincho',serif;font-size:32px;color:var(--gold);">7種類</div>
+        <div style="font-size:13px;color:var(--mid);">無料〜有料会員限定まで<br>幅広いテンプレートを用意</div>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ EVENTS ══ -->
+<section class="section" id="events" style="background:var(--white);">
+  <div class="sec-inner">
+    <div class="sec-eyebrow">Positive Events</div>
+    <h2 class="sec-title">終活を、<em>楽しもう。</em></h2>
+    <p class="sec-desc">「霊園見学してからお寿司」「介護中の方限定ダーツ大会」——終活の入口は、楽しい体験でいい。参加したら、自然と終活が前進している。そんなイベントを開催します。</p>
+
+    <!-- カテゴリタブ -->
+    <div style="display:flex;gap:12px;margin-top:40px;margin-bottom:32px;flex-wrap:wrap;">
+      <button class="ev-tab active" onclick="setEvTab(this,'all')">すべて</button>
+      <button class="ev-tab" onclick="setEvTab(this,'enjoy')">🍷 楽しみながら</button>
+      <button class="ev-tab" onclick="setEvTab(this,'experience')">🌸 体験＋終活</button>
+      <button class="ev-tab" onclick="setEvTab(this,'friends')">👥 仲間づくり</button>
+    </div>
+
+    <div class="events-grid">
+      <!-- Event 1 -->
+      <div class="ev-card" data-cat="enjoy">
+        <div class="ev-photo" style="background:url('img_1.jpg">
+          <div class="ev-badge">65歳以上限定</div>
+        </div>
+        <div class="ev-body">
+          <div class="ev-cat">楽しみながら</div>
+          <div class="ev-title">ワインを楽しみながら終活を語る会</div>
+          <div class="ev-detail">厳選ワイン3種を飲みながら、同世代の仲間と終活トークを気軽に。専門家も同席し、気になることをさらっと聞けます。</div>
+          <div class="ev-meta">
+            <span>📅 毎月第2土曜</span>
+            <span>📍 東京・六本木</span>
+            <span>👥 定員15名</span>
+          </div>
+        </div>
+        <div class="ev-foot">
+          <div class="ev-price">¥5,000<span>（有料会員 ¥4,000）</span></div>
+          <button class="ev-btn" onclick="openModal('register')">参加する</button>
+        </div>
+      </div>
+
+      <!-- Event 2 -->
+      <div class="ev-card" data-cat="experience">
+        <div class="ev-photo" style="background:url('img_2.jpg">
+          <div class="ev-badge">大人気</div>
+        </div>
+        <div class="ev-body">
+          <div class="ev-cat">体験＋終活</div>
+          <div class="ev-title">首都圏近郊の霊園を見学してからお寿司を楽しむ会</div>
+          <div class="ev-detail">話題の樹木葬・自然葬霊園を専門家と一緒に見学。見学後は近くの寿司屋で感想を語り合う。「見てみたかった」を気軽に叶えます。</div>
+          <div class="ev-meta">
+            <span>📅 隔月開催</span>
+            <span>📍 首都圏近郊</span>
+            <span>👥 定員20名</span>
+          </div>
+        </div>
+        <div class="ev-foot">
+          <div class="ev-price">¥8,000<span>（有料会員 ¥6,500）</span></div>
+          <button class="ev-btn" onclick="openModal('register')">参加する</button>
+        </div>
+      </div>
+
+      <!-- Event 3 -->
+      <div class="ev-card" data-cat="experience">
+        <div class="ev-photo" style="background:url('img_3.jpg">
+          <div class="ev-badge">介護中の方限定</div>
+        </div>
+        <div class="ev-body">
+          <div class="ev-cat">体験＋終活</div>
+          <div class="ev-title">介護中の方限定！ダーツ大会</div>
+          <div class="ev-detail">毎日頑張っている介護者の皆さんへ。思い切りダーツを投げてストレス発散。同じ境遇の仲間と出会い、介護の悩みを笑いながら話せる場所。</div>
+          <div class="ev-meta">
+            <span>📅 月1回</span>
+            <span>📍 東京・新宿</span>
+            <span>👥 定員20名</span>
+          </div>
+        </div>
+        <div class="ev-foot">
+          <div class="ev-price">¥3,000<span>（有料会員 ¥2,000）</span></div>
+          <button class="ev-btn" onclick="openModal('register')">参加する</button>
+        </div>
+      </div>
+
+      <!-- Event 4 -->
+      <div class="ev-card" data-cat="enjoy">
+        <div class="ev-photo" style="background:url('img_4.jpg">
+          <div class="ev-badge">少人数制</div>
+        </div>
+        <div class="ev-body">
+          <div class="ev-cat">楽しみながら</div>
+          <div class="ev-title">弁護士と一緒に遺言書を書いてランチ</div>
+          <div class="ev-detail">午前中に弁護士のサポートのもとで自筆証書遺言書を作成。午後はおしゃれなランチで達成感を祝う。「難しそう」が「できた！」に変わる半日。</div>
+          <div class="ev-meta">
+            <span>📅 月1回</span>
+            <span>📍 東京・丸の内</span>
+            <span>👥 定員8名</span>
+          </div>
+        </div>
+        <div class="ev-foot">
+          <div class="ev-price">¥8,000<span>（有料会員 ¥6,500）</span></div>
+          <button class="ev-btn" onclick="openModal('register')">参加する</button>
+        </div>
+      </div>
+
+      <!-- Event 5 -->
+      <div class="ev-card" data-cat="friends">
+        <div class="ev-photo" style="background:url('img_5.jpg">
+          <div class="ev-badge">子世代向け</div>
+        </div>
+        <div class="ev-body">
+          <div class="ev-cat">仲間づくり</div>
+          <div class="ev-title">「親の終活、どう切り出す？」飲み会</div>
+          <div class="ev-detail">40〜50代の子世代が集まり、「親に終活の話をどう切り出すか」をざっくばらんに話し合う。FPが同席し、相続や資産の話も気軽に聞けます。</div>
+          <div class="ev-meta">
+            <span>📅 月2回</span>
+            <span>📍 東京・渋谷</span>
+            <span>👥 定員25名</span>
+          </div>
+        </div>
+        <div class="ev-foot">
+          <div class="ev-price">¥4,000<span>（有料会員 ¥3,000）</span></div>
+          <button class="ev-btn" onclick="openModal('register')">参加する</button>
+        </div>
+      </div>
+
+      <!-- Event 6 -->
+      <div class="ev-card" data-cat="friends">
+        <div class="ev-photo" style="background:url('img_6.jpg">
+          <div class="ev-badge">人気</div>
+        </div>
+        <div class="ev-body">
+          <div class="ev-cat">仲間づくり</div>
+          <div class="ev-title">樹木葬の森でピクニック＆自然葬を知る会</div>
+          <div class="ev-detail">緑豊かな樹木葬霊園でピクニックランチ。自然葬・散骨の専門家から話を聞きながら、森の中でゆったり過ごす1日。「ここに眠りたい」と思えるかも。</div>
+          <div class="ev-meta">
+            <span>📅 季節ごと年4回</span>
+            <span>📍 首都圏近郊</span>
+            <span>👥 定員30名</span>
+          </div>
+        </div>
+        <div class="ev-foot">
+          <div class="ev-price">¥5,000<span>（有料会員 ¥4,000）</span></div>
+          <button class="ev-btn" onclick="openModal('register')">参加する</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTAバナー -->
+    <div style="margin-top:48px;background:var(--green);border-radius:20px;padding:48px;text-align:center;">
+      <div style="font-family:'Shippori Mincho',serif;font-size:26px;color:#fff;margin-bottom:12px;font-weight:500;">イベントは有料会員が優先予約・参加費割引</div>
+      <div style="font-size:15px;color:rgba(255,255,255,.75);margin-bottom:28px;line-height:1.9;">掲示板で知り合った仲間とリアルで会える場所。<br>楽しみながら、自然と終活が前進していく。</div>
+      <button class="btn-primary" onclick="openModal('upgrade')" style="font-size:16px;padding:16px 40px;">¥980/月で優先参加する</button>
+    </div>
+  </div>
+</section>
+
+<style>
+.ev-tab{background:var(--cream);border:1.5px solid var(--border);color:var(--mid);padding:9px 20px;border-radius:24px;font-size:14px;cursor:pointer;transition:all .2s;font-family:'Zen Kaku Gothic New',sans-serif;}
+.ev-tab:hover,.ev-tab.active{background:var(--green);border-color:var(--green);color:#fff;}
+.events-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.ev-card{background:#fff;border-radius:16px;overflow:hidden;border:1px solid var(--border);transition:all .25s;box-shadow:0 4px 20px rgba(26,92,42,.08);}
+.ev-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(26,92,42,.15);}
+.ev-card[style*="display:none"]{display:none!important;}
+.ev-photo{height:160px;display:flex;align-items:center;justify-content:center;position:relative;}
+.ev-photo-icon{font-size:48px;}
+.ev-badge{position:absolute;top:12px;right:12px;background:rgba(255,255,255,.92);color:var(--green);font-size:11px;padding:4px 12px;border-radius:12px;font-weight:700;}
+.ev-body{padding:20px;}
+.ev-cat{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--green-mid);margin-bottom:6px;font-weight:500;}
+.ev-title{font-family:'Shippori Mincho',serif;font-size:16px;color:var(--green);font-weight:600;margin-bottom:10px;line-height:1.6;}
+.ev-detail{font-size:13px;color:var(--mid);line-height:1.85;margin-bottom:14px;}
+.ev-meta{display:flex;flex-wrap:wrap;gap:10px;}
+.ev-meta span{font-size:12px;color:var(--mid);background:var(--cream);padding:3px 10px;border-radius:8px;}
+.ev-foot{padding:16px 20px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+.ev-price{font-size:16px;color:var(--green);font-weight:700;}
+.ev-price span{font-size:11px;color:var(--mid);font-weight:400;display:block;}
+.ev-btn{font-size:13px;padding:8px 20px;border-radius:6px;border:1.5px solid var(--green-mid);color:var(--green-mid);background:transparent;cursor:pointer;transition:all .2s;font-family:'Zen Kaku Gothic New',sans-serif;}
+.ev-btn:hover{background:var(--green-mid);color:#fff;}
+@media(max-width:768px){
+  /* ナビ */
+  #nav-desktop{display:none!important;}
+  .nav-hamburger{display:flex!important;}
+  nav{padding:0 16px;}
+  
+  /* ヒーロー */
+  .hero-inner{grid-template-columns:1fr!important;padding:40px 20px 60px!important;gap:24px;}
+  .hero-right{display:none!important;}
+  .hero-title{font-size:36px!important;white-space:normal!important;line-height:1.3!important;}
+  .hero-catch{font-size:16px!important;}
+  .hero-desc{font-size:15px!important;}
+  .hero-btns{flex-direction:column!important;gap:12px!important;}
+  .btn-primary,.btn-secondary{width:100%!important;text-align:center!important;box-sizing:border-box!important;}
+  .hero-badges{flex-direction:column!important;gap:8px!important;}
+  .hero-eyebrow{font-size:11px!important;}
+  
+  /* 統計 */
+  .features-bar{padding:32px 16px!important;}
+  .features-bar-inner{grid-template-columns:1fr 1fr!important;}
+  .fb-num{font-size:30px!important;}
+  .fb-desc{font-size:12px!important;}
+  
+  /* 共通セクション */
+  .section{padding:52px 16px!important;}
+  .sec-title{font-size:26px!important;}
+  .sec-desc{font-size:15px!important;}
+  
+  /* 掲示板 */
+  .board-layout{grid-template-columns:1fr!important;}
+  .board-sidebar{display:flex!important;flex-wrap:wrap!important;gap:8px!important;margin-bottom:20px!important;}
+  .board-cat{padding:8px 12px!important;border-radius:20px!important;}
+  .bc-count{display:none!important;}
+  .board-new-placeholder{font-size:14px!important;}
+  .thread-title{font-size:15px!important;}
+  .thread-preview{font-size:13px!important;}
+  
+  /* コミュニティ */
+  .community-layout{flex-direction:column!important;}
+  .comm-photo-section{height:280px!important;width:100%!important;}
+  .comm-posts{display:flex!important;flex-direction:column!important;gap:16px!important;}
+  .comm-text{font-size:14px!important;}
+  
+  /* セミナー */
+  .seminar-grid{grid-template-columns:1fr!important;}
+  .seminar-photo{height:200px!important;}
+  .seminar-archive{grid-template-columns:1fr!important;padding:32px 20px!important;}
+  
+  /* プラン */
+  .plans-grid{grid-template-columns:1fr!important;}
+  .plan-price{font-size:44px!important;}
+  
+  /* テンプレート */
+  .template-layout{flex-direction:column!important;}
+  .template-photo{height:240px!important;}
+  .template-content-grid{grid-template-columns:1fr!important;gap:24px!important;}
+  .ti-name{font-size:14px!important;}
+  
+  /* イベント */
+  .events-grid{grid-template-columns:1fr!important;}
+  .ev-tab{font-size:13px!important;padding:8px 14px!important;}
+  .ev-title{font-size:15px!important;}
+  
+  /* フッター */
+  .footer-photo{height:560px!important;}
+  .footer-content{padding:28px 16px!important;}
+  .footer-inner{grid-template-columns:1fr!important;gap:24px!important;}
+  .footer-bottom{padding:12px 16px!important;flex-direction:column!important;gap:4px!important;text-align:center!important;}
+  
+  /* モーダル */
+  .modal{padding:32px 20px!important;margin:10px!important;border-radius:16px!important;}
+  .modal-title{font-size:24px!important;}
+}
+@media(max-width:900px){.events-grid{grid-template-columns:1fr;}}
+</style>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <img id="footer-photo" class="footer-photo" src="" alt="星空">
+  <div class="footer-overlay"></div>
+  <div class="footer-content">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">Happy<em>Ending</em></div>
+        <p class="footer-tagline">終活は「終わり」ではなく、<br>より豊かな「今」のための準備です。</p>
+      </div>
+      <div class="footer-col"><h4>コンテンツ</h4><a>AI記事（無料）</a><a>専門家記事（有料）</a><a>デジタル終活</a><a>テンプレートDL</a></div>
+      <div class="footer-col"><h4>コミュニティ</h4><a>掲示板</a><a>グループ</a><a>セミナー</a><a>1on1相談</a></div>
+      <div class="footer-col"><h4>サポート</h4><a>プラン比較</a><a>よくある質問</a><a>プライバシーポリシー</a><a>利用規約</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2025 Happy Ending. All rights reserved.</span>
+    <span class="footer-copy">決済・個人情報はStripeにて安全に管理</span>
+  </div>
+</footer>
+
+<!-- ══ MODALS ══ -->
+<div class="modal-overlay" id="modal-register">
+  <div class="modal">
+    <button class="modal-x" onclick="closeModal('register')">✕</button>
+    <h2 class="modal-title">無料会員登録</h2>
+    <p class="modal-sub">掲示板・AI記事が無料で始められます</p>
+    <div class="form-g"><label class="form-label">メールアドレス</label><input type="email" class="form-input" placeholder="example@email.com"></div>
+    <div class="form-g"><label class="form-label">パスワード</label><input type="password" class="form-input" placeholder="8文字以上"></div>
+    <div class="form-g"><label class="form-label">ニックネーム</label><input type="text" class="form-input" placeholder="掲示板で表示される名前"></div>
+    <button class="form-submit">無料で始める</button>
+    <div class="modal-hint">
+      <div class="mh-text"><strong>⭐ 有料会員（¥980/月）がお得</strong>セミナー無料参加・専門家監修記事が全て使えます。30日間無料トライアルあり。<a onclick="closeModal('register');openModal('upgrade')">有料プランを見る →</a></div>
+    </div>
+    <div class="modal-login">すでに登録済みの方は <a href="#">ログイン</a></div>
+  </div>
+</div>
+<div class="modal-overlay" id="modal-upgrade">
+  <div class="modal">
+    <button class="modal-x" onclick="closeModal('upgrade')">✕</button>
+    <h2 class="modal-title">有料会員になる</h2>
+    <p class="modal-sub">30日間無料トライアル付き。いつでも解約可能。</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:22px;">
+      <div style="border:2px solid var(--green-mid);border-radius:10px;padding:14px;cursor:pointer;background:var(--green-light);">
+        <div style="font-size:10px;color:var(--green-mid);margin-bottom:4px;">月払い</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--green);">¥980</div>
+        <div style="font-size:11px;color:var(--mid);">/月</div>
+      </div>
+      <div style="border:2px solid var(--gold);border-radius:10px;padding:14px;cursor:pointer;background:var(--lgold);position:relative;">
+        <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--gold);color:#fff;font-size:9px;padding:2px 10px;border-radius:10px;white-space:nowrap;">2ヶ月お得</div>
+        <div style="font-size:10px;color:var(--gold);margin-bottom:4px;">年払い</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--green);">¥9,800</div>
+        <div style="font-size:11px;color:var(--mid);">/年</div>
+      </div>
+    </div>
+    <div class="form-g"><label class="form-label">メールアドレス</label><input type="email" class="form-input" placeholder="example@email.com"></div>
+    <div class="form-g"><label class="form-label">カード番号</label><input type="text" class="form-input" placeholder="Stripe経由で安全に処理"></div>
+    <button class="form-submit gold">30日間無料で始める</button>
+    <p style="font-size:11px;color:#bbb;text-align:center;margin-top:10px;">🔒 決済はStripeで安全に処理</p>
+  </div>
+</div>
+
+<script>
+// ── 写真をBase64でセット ──
+const PHOTOS = {
+  "sunset_beach": "photo_sunset_beach.jpg",
+  "purple_sea": "photo_purple_sea.jpg",
+  "tree": "photo_tree.jpg",
+  "fuji": "photo_fuji.jpg",
+  "blue_sea": "photo_blue_sea.jpg",
+  "stars": "photo_stars.jpg",
+  "moon": "photo_moon.jpg"
+}
+
+function setPhoto(id, key) {
+  const el = document.getElementById(id);
+  if(el && PHOTOS[key]) el.src = PHOTOS[key];
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  // ヒーロー：動画に差し替え済み
+  setPhoto('comm-photo', 'purple_sea');         // コミュニティ：夕焼け×海
+  setPhoto('seminar-photo1', 'tree');           // セミナー1：大樹
+  setPhoto('seminar-photo2', 'moon');           // セミナー2：満月×ススキ
+  setPhoto('seminar-photo3', 'fuji');           // セミナー3：富士山
+  setPhoto('tmpl-photo', 'blue_sea');           // テンプレート：青い海
+  setPhoto('footer-photo', 'stars');            // フッター：星空
+});
+
+function toggleMenu() {
+  const menu = document.getElementById('nav-mobile');
+  const btn = document.getElementById('hamburger');
+  menu.classList.toggle('open');
+  const spans = btn.querySelectorAll('span');
+  if(menu.classList.contains('open')) {
+    spans[0].style.transform = 'rotate(45deg) translate(5px,5px)';
+    spans[1].style.opacity = '0';
+    spans[2].style.transform = 'rotate(-45deg) translate(5px,-5px)';
+  } else {
+    spans[0].style.transform = '';
+    spans[1].style.opacity = '';
+    spans[2].style.transform = '';
+  }
+}
+function closeMenu() {
+  const menu = document.getElementById('nav-mobile');
+  const btn = document.getElementById('hamburger');
+  menu.classList.remove('open');
+  btn.querySelectorAll('span').forEach(s => { s.style.transform=''; s.style.opacity=''; });
+}
+function showSection(id) {
+  const el = document.getElementById(id);
+  if(el) el.scrollIntoView({behavior:'smooth'});
+}
+function openModal(id) {
+  document.getElementById('modal-'+id).classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(id) {
+  document.getElementById('modal-'+id).classList.remove('open');
+  document.body.style.overflow='';
+}
+document.querySelectorAll('.modal-overlay').forEach(o => {
+  o.addEventListener('click', e => { if(e.target===o){o.classList.remove('open');document.body.style.overflow='';} });
+});
+function setEvTab(el, cat) {
+  document.querySelectorAll('.ev-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('.ev-card').forEach(c => {
+    if(cat === 'all' || c.dataset.cat === cat) {
+      c.style.display = '';
+    } else {
+      c.style.display = 'none';
+    }
+  });
+}
+function setActive(el) {
+  document.querySelectorAll('.board-cat').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+}
+</script>
+</body>
+</html>
