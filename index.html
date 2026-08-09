@@ -60,19 +60,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,92,42,0.9
   position:absolute;inset:0;
   background:linear-gradient(
     to bottom,
-    rgba(0,20,5,0.15) 0%,
-    rgba(0,20,5,0.35) 40%,
-    rgba(0,20,5,0.75) 75%,
-    rgba(0,20,5,0.90) 100%
+    rgba(0,20,5,0.20) 0%,
+    rgba(0,20,5,0.45) 40%,
+    rgba(0,20,5,0.80) 75%,
+    rgba(0,20,5,0.92) 100%
   );
 }
 .hero-inner{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:60px 48px 80px;display:grid;grid-template-columns:1fr 340px;gap:60px;align-items:flex-end;width:100%;}
 .hero-left{}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.4);color:#fff;font-size:10px;letter-spacing:.18em;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:28px;font-weight:500;}
-.hero-title{font-family:'Shippori Mincho',serif;font-size:clamp(36px,4vw,58px);font-weight:500;color:#fff;line-height:1.25;margin-bottom:8px;}
+.hero-title{font-family:'Shippori Mincho',serif;font-size:clamp(36px,4vw,58px);font-weight:500;color:#fff;line-height:1.25;margin-bottom:8px;text-shadow:0 2px 8px rgba(0,0,0,0.5);}
 .hero-title em{font-style:normal;color:var(--gold);}
-.hero-catch{font-family:'Shippori Mincho',serif;font-size:17px;color:rgba(255,255,255,.9);margin-bottom:16px;font-weight:400;line-height:1.9;}
-.hero-desc{font-size:16px;color:rgba(255,255,255,.75);line-height:2.0;margin-bottom:32px;max-width:480px;}
+.hero-catch{font-family:'Shippori Mincho',serif;font-size:17px;color:#fff;margin-bottom:16px;font-weight:500;line-height:1.9;text-shadow:0 1px 6px rgba(0,0,0,0.5);}
+.hero-desc{font-size:16px;color:rgba(255,255,255,.95);line-height:2.0;margin-bottom:32px;max-width:480px;text-shadow:0 1px 4px rgba(0,0,0,0.4);}
 .hero-btns{display:flex;gap:14px;margin-bottom:40px;}
 .btn-primary{background:var(--gold);color:#fff;border:none;padding:14px 32px;border-radius:6px;font-family:'Zen Kaku Gothic New',sans-serif;font-size:15px;font-weight:500;cursor:pointer;letter-spacing:.06em;box-shadow:0 4px 16px rgba(200,132,26,.35);transition:all .25s;text-decoration:none;display:inline-block;}
 .btn-primary:hover{background:#a87014;transform:translateY(-1px);}
@@ -267,7 +267,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,92,42,0.9
   /* ヒーロー */
   .hero-inner{grid-template-columns:1fr!important;padding:40px 20px 60px!important;gap:24px;}
   .hero-right{display:none!important;}
-  .hero-title{font-size:36px!important;white-space:normal!important;line-height:1.3!important;}
+  .hero-title{font-size:34px!important;white-space:normal!important;line-height:1.35!important;word-break:keep-all!important;}
   .hero-catch{font-size:16px!important;}
   .hero-desc{font-size:15px!important;}
   .hero-btns{flex-direction:column!important;gap:12px!important;}
@@ -385,7 +385,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,92,42,0.9
   <div class="hero-inner">
     <div class="hero-left">
       <div class="hero-eyebrow">✦ 終活コミュニティプラットフォーム</div>
-      <h1 class="hero-title">人生の<em>締めくくり</em>を、<br>もっと自分らしく。</h1>
+      <h1 class="hero-title">人生の<em>締めくくり</em>を、もっと自分らしく。</h1>
       <p class="hero-catch">終活は「終わり」ではなく、今をより豊かに生きるための準備。</p>
       <p class="hero-desc">終活は孤独じゃない。同じ悩みを持つ仲間と掲示板でつながり、信頼できる専門家に出会う場所。掲示板は全員無料、有料会員はセミナー・プロ記事・1on1相談が使えます。</p>
       <div class="hero-btns">
@@ -831,13 +831,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,92,42,0.9
 .ev-badge{position:absolute;top:12px;right:12px;background:rgba(255,255,255,.92);color:var(--green);font-size:11px;padding:4px 12px;border-radius:12px;font-weight:700;}
 .ev-body{padding:20px;}
 .ev-cat{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--green-mid);margin-bottom:6px;font-weight:500;}
-.ev-title{font-family:'Shippori Mincho',serif;font-size:16px;color:var(--green);font-weight:600;margin-bottom:10px;line-height:1.6;}
-.ev-detail{font-size:13px;color:var(--mid);line-height:1.85;margin-bottom:14px;}
+.ev-title{font-family:'Shippori Mincho',serif;font-size:18px;color:var(--green);font-weight:600;margin-bottom:10px;line-height:1.6;}
+.ev-detail{font-size:15px;color:var(--mid);line-height:1.9;margin-bottom:14px;}
 .ev-meta{display:flex;flex-wrap:wrap;gap:10px;}
-.ev-meta span{font-size:12px;color:var(--mid);background:var(--cream);padding:3px 10px;border-radius:8px;}
+.ev-meta span{font-size:13px;color:var(--mid);background:var(--cream);padding:4px 12px;border-radius:8px;}
 .ev-foot{padding:16px 20px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
-.ev-price{font-size:16px;color:var(--green);font-weight:700;}
-.ev-price span{font-size:11px;color:var(--mid);font-weight:400;display:block;}
+.ev-price{font-size:18px;color:var(--green);font-weight:700;}
+.ev-price span{font-size:13px;color:var(--mid);font-weight:400;display:block;}
 .ev-btn{font-size:13px;padding:8px 20px;border-radius:6px;border:1.5px solid var(--green-mid);color:var(--green-mid);background:transparent;cursor:pointer;transition:all .2s;font-family:'Zen Kaku Gothic New',sans-serif;}
 .ev-btn:hover{background:var(--green-mid);color:#fff;}
 @media(max-width:768px){
@@ -849,7 +849,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,92,42,0.9
   /* ヒーロー */
   .hero-inner{grid-template-columns:1fr!important;padding:40px 20px 60px!important;gap:24px;}
   .hero-right{display:none!important;}
-  .hero-title{font-size:36px!important;white-space:normal!important;line-height:1.3!important;}
+  .hero-title{font-size:34px!important;white-space:normal!important;line-height:1.35!important;word-break:keep-all!important;}
   .hero-catch{font-size:16px!important;}
   .hero-desc{font-size:15px!important;}
   .hero-btns{flex-direction:column!important;gap:12px!important;}
