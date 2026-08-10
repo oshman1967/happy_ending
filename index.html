@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Ending — 終活コミュニティ</title>
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap&font-display=swap" rel="stylesheet">
 <style>
 :root{
   --green:#1A5C2A; --green-mid:#2E8B5A; --green-light:#E8F5EE;
@@ -144,7 +144,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,92,42,0.9
 .comm-photo{width:100%;height:100%;object-fit:cover;}
 .comm-photo-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,92,42,.8) 0%,transparent 60%);}
 .comm-photo-text{position:absolute;bottom:36px;left:36px;right:36px;}
-.comm-photo-title{font-family:'Shippori Mincho',serif;font-size:28px;color:#fff;font-weight:500;margin-bottom:10px;}
+.comm-photo-title{font-family:'Shippori Mincho',serif;font-size:28px;color:#fff;font-weight:500;margin-bottom:10px;word-break:keep-all;overflow-wrap:break-word;}
 .comm-photo-desc{font-size:14px;color:rgba(255,255,255,.8);line-height:1.9;}
 .comm-posts{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
 .comm-card{background:var(--cream);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:12px;transition:all .2s;}
@@ -156,7 +156,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,92,42,0.9
 .comm-text{font-size:15px;color:var(--mid);line-height:1.95;}
 .comm-tags{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;}
 .comm-tag{font-size:12px;padding:3px 12px;border-radius:10px;background:var(--green-light);color:var(--green-mid);border:1px solid rgba(46,139,90,.2);}
-.comm-lock{margin-top:16px;background:var(--green-light);border-radius:10px;padding:20px;text-align:center;border:1px solid rgba(46,139,90,.2);}
+.comm-lock{margin-top:16px;background:var(--green-light);border-radius:10px;padding:20px;text-align:center;border:1px solid rgba(46,139,90,.2);width:100%;box-sizing:border-box;}
 .comm-lock p{font-size:15px;color:var(--green);margin-bottom:14px;}
 
 /* ── SEMINAR ── */
@@ -281,23 +281,26 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,92,42,0.9
   .hero-left{width:100%;overflow:hidden;}
   .hero-eyebrow{font-size:11px!important;padding:5px 12px!important;}
   .hero-title{
-    font-size:28px!important;
-    line-height:1.4!important;
+    font-size:24px!important;
+    line-height:1.5!important;
     white-space:normal!important;
-    overflow-wrap:break-word!important;
-    word-break:normal!important;
+    overflow-wrap:anywhere!important;
+    word-break:keep-all!important;
     width:100%!important;
     max-width:100%!important;
+    letter-spacing:-0.01em!important;
   }
   .hero-catch{font-size:15px!important;line-height:1.8!important;}
   .hero-desc{font-size:14px!important;line-height:1.9!important;max-width:100%!important;}
-  .hero-btns{flex-direction:column!important;gap:10px!important;width:100%!important;}
+  .hero-btns{flex-direction:column!important;gap:10px!important;width:100%!important;align-items:stretch!important;}
   .btn-primary,.btn-secondary{
     width:100%!important;
     text-align:center!important;
     box-sizing:border-box!important;
     display:block!important;
     padding:16px!important;
+    margin-left:0!important;
+    margin-right:0!important;
   }
   .hero-badges{flex-direction:column!important;gap:8px!important;}
   .hero-badge{font-size:13px!important;}
@@ -310,7 +313,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,92,42,0.9
   
   /* 共通セクション */
   .section{padding:48px 16px!important;}
-  .sec-title{font-size:24px!important;line-height:1.4!important;}
+  .sec-title{font-size:22px!important;line-height:1.5!important;word-break:keep-all!important;overflow-wrap:break-word!important;}
   .sec-desc{font-size:14px!important;max-width:100%!important;}
   
   /* 掲示板 */
@@ -327,6 +330,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,92,42,0.9
   /* コミュニティ */
   .community-layout{flex-direction:column!important;}
   .comm-photo-section{height:260px!important;width:100%!important;}
+  .comm-photo-title{font-size:22px!important;word-break:keep-all!important;}
+  .comm-photo-text{bottom:20px!important;left:20px!important;right:20px!important;}
   .comm-posts{display:flex!important;flex-direction:column!important;gap:14px!important;}
   .comm-text{font-size:14px!important;}
   
