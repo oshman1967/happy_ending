@@ -146,7 +146,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,92,42,0.9
 .comm-photo-text{position:absolute;bottom:36px;left:36px;right:36px;}
 .comm-photo-title{font-family:'Shippori Mincho',serif;font-size:28px;color:#fff;font-weight:500;margin-bottom:10px;word-break:keep-all;overflow-wrap:break-word;}
 .comm-photo-desc{font-size:14px;color:rgba(255,255,255,.8);line-height:1.9;}
-.comm-posts{display:grid;grid-template-columns:1fr 1fr;gap:20px;} .comm-lock{grid-column:1/-1;text-align:center;}
+.comm-posts{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
 .comm-card{background:var(--cream);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:12px;transition:all .2s;}
 .comm-card:hover{border-color:var(--green-mid);}
 .comm-card-head{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
@@ -156,7 +156,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,92,42,0.9
 .comm-text{font-size:15px;color:var(--mid);line-height:1.95;}
 .comm-tags{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;}
 .comm-tag{font-size:12px;padding:3px 12px;border-radius:10px;background:var(--green-light);color:var(--green-mid);border:1px solid rgba(46,139,90,.2);}
-.comm-lock{margin-top:16px;background:var(--green-light);border-radius:10px;padding:20px;border:1px solid rgba(46,139,90,.2);width:100%;box-sizing:border-box;text-align:center;}
+.comm-lock{margin-top:16px;background:var(--green-light);border-radius:10px;padding:20px;text-align:center;border:1px solid rgba(46,139,90,.2);width:100%;box-sizing:border-box;}
 .comm-lock p{font-size:15px;color:var(--green);margin-bottom:14px;}
 
 /* ── SEMINAR ── */
@@ -276,7 +276,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,92,42,0.9
   .hero-desc{font-size:14px!important;max-width:100%!important;}
   .hero-eyebrow{font-size:11px!important;}
   .hero-btns{display:flex!important;flex-direction:column!important;gap:10px!important;}
-  .hero-btns .btn-primary,.hero-btns .btn-secondary{display:block!important;width:100%!important;text-align:center!important;box-sizing:border-box!important;padding:16px!important;}
+  .btn-primary,.btn-secondary{display:block!important;width:100%!important;text-align:center!important;box-sizing:border-box!important;padding:16px!important;}
   .hero-badges{display:flex!important;flex-direction:column!important;gap:8px!important;}
   .features-bar-inner{grid-template-columns:1fr 1fr!important;}
   .fb-num{font-size:28px!important;}
@@ -352,7 +352,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,92,42,0.9
   <div class="hero-inner">
     <div class="hero-left">
       <div class="hero-eyebrow">✦ 終活コミュニティプラットフォーム</div>
-      <h1 class="hero-title" style="font-size:clamp(20px,3.5vw,58px);margin-bottom:24px;">人生の<em>締めくくり</em>を、<br>もっと自分らしく。</h1>
+      <h1 class="hero-title" style="font-size:clamp(20px,3.5vw,58px);">人生の<em>締めくくり</em>を、<br>もっと自分らしく。</h1>
       <p class="hero-catch">終活は「終わり」ではなく、今をより豊かに生きるための準備。</p>
       <p class="hero-desc">終活は孤独じゃない。同じ悩みを持つ仲間と掲示板でつながり、信頼できる専門家に出会う場所。掲示板は全員無料、有料会員はセミナー・プロ記事・1on1相談が使えます。</p>
       <div class="hero-btns">
@@ -488,9 +488,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,92,42,0.9
           <div class="comm-tags"><span class="comm-tag">相続</span><span class="comm-tag">親との話し合い</span></div>
         </div>
       </div>
-      <div style="margin-top:16px;background:#EAFAF1;border-radius:10px;padding:20px;border:1px solid rgba(46,139,90,.2);text-align:center;">
-        <p style="font-size:15px;color:#1A5C2A;margin-bottom:14px;">🔒 グループへの投稿・参加は有料会員限定です</p>
-        <button onclick="openModal('upgrade')" style="background:#C8841A;color:#fff;border:none;padding:14px 32px;border-radius:6px;font-size:15px;font-weight:500;cursor:pointer;">¥980/月で参加する</button>
+      <div class="comm-lock">
+        <p>🔒 グループへの投稿・参加は有料会員限定です</p>
+        <button class="btn-primary" onclick="openModal('upgrade')">¥980/月で参加する</button>
       </div>
     </div>
   </div>
@@ -665,7 +665,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,92,42,0.9
             <span>👥 定員15名</span>
           </div>
         </div>
-        <div class="ev-foot" style="display:flex;justify-content:center;align-items:center;gap:20px;">
+        <div class="ev-foot">
           <div class="ev-price">¥5,000<span>（有料会員 ¥4,000）</span></div>
           <button class="ev-btn" onclick="openModal('register')">参加する</button>
         </div>
@@ -686,7 +686,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,92,42,0.9
             <span>👥 定員20名</span>
           </div>
         </div>
-        <div class="ev-foot" style="display:flex;justify-content:center;align-items:center;gap:20px;">
+        <div class="ev-foot">
           <div class="ev-price">¥8,000<span>（有料会員 ¥6,500）</span></div>
           <button class="ev-btn" onclick="openModal('register')">参加する</button>
         </div>
@@ -707,7 +707,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,92,42,0.9
             <span>👥 定員20名</span>
           </div>
         </div>
-        <div class="ev-foot" style="display:flex;justify-content:center;align-items:center;gap:20px;">
+        <div class="ev-foot">
           <div class="ev-price">¥3,000<span>（有料会員 ¥2,000）</span></div>
           <button class="ev-btn" onclick="openModal('register')">参加する</button>
         </div>
@@ -728,7 +728,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,92,42,0.9
             <span>👥 定員8名</span>
           </div>
         </div>
-        <div class="ev-foot" style="display:flex;justify-content:center;align-items:center;gap:20px;">
+        <div class="ev-foot">
           <div class="ev-price">¥8,000<span>（有料会員 ¥6,500）</span></div>
           <button class="ev-btn" onclick="openModal('register')">参加する</button>
         </div>
@@ -749,7 +749,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,92,42,0.9
             <span>👥 定員25名</span>
           </div>
         </div>
-        <div class="ev-foot" style="display:flex;justify-content:center;align-items:center;gap:20px;">
+        <div class="ev-foot">
           <div class="ev-price">¥4,000<span>（有料会員 ¥3,000）</span></div>
           <button class="ev-btn" onclick="openModal('register')">参加する</button>
         </div>
@@ -770,7 +770,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,92,42,0.9
             <span>👥 定員30名</span>
           </div>
         </div>
-        <div class="ev-foot" style="display:flex;justify-content:center;align-items:center;gap:20px;">
+        <div class="ev-foot">
           <div class="ev-price">¥5,000<span>（有料会員 ¥4,000）</span></div>
           <button class="ev-btn" onclick="openModal('register')">参加する</button>
         </div>
