@@ -222,6 +222,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,92,42,0.9
 .ti-paid{background:var(--lgold);color:var(--gold);}
 .ti-name{font-size:15px;color:var(--dark);}
 
+/* ── ARTICLES ── */
+.art-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px;}
+.art-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:24px;display:flex;flex-direction:column;gap:10px;}
+.art-top{display:flex;justify-content:space-between;align-items:center;}
+.art-cat{font-size:11px;color:var(--green-mid);font-weight:600;}
+.art-title{font-family:'Shippori Mincho',serif;font-size:17px;color:var(--dark);line-height:1.5;font-weight:600;}
+.art-desc{font-size:13px;color:var(--mid);line-height:1.7;flex:1;}
+.art-cta{font-size:13px;color:var(--green-mid);font-weight:600;margin-top:4px;}
+@media (max-width:768px){.art-grid{grid-template-columns:1fr!important;}}
+
 /* ── FOOTER ── */
 .footer{position:relative;overflow:hidden;}
 .footer-photo{width:100%;height:420px;object-fit:cover;object-position:center 30%;display:block;}
@@ -322,6 +332,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,92,42,0.9
   </div>
   <div class="nav-links" id="nav-desktop">
     <a onclick="showSection('bulletin')">掲示板</a>
+    <a onclick="showSection('articles')">記事</a>
     <a onclick="showSection('seminar')">セミナー</a>
     <a onclick="showSection('template')">テンプレート</a>
     <a onclick="openModal('register')">無料登録</a>
@@ -333,6 +344,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,92,42,0.9
 </nav>
 <div class="nav-mobile" id="nav-mobile">
   <a onclick="showSection('bulletin');closeMenu()">掲示板</a>
+  <a onclick="showSection('articles');closeMenu()">記事</a>
   <a onclick="showSection('seminar');closeMenu()">セミナー</a>
   <a onclick="showSection('template');closeMenu()">テンプレート</a>
   <a onclick="openModal('register');closeMenu()">無料登録</a>
@@ -447,6 +459,53 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,92,42,0.9
           <div class="thread-preview">実家の相続の話をしたいのに、離れて暮らす弟は「考えすぎ」と取り合ってくれず、一人で抱え込んでいます。皆さんはどうやってきょうだいを話し合いの場に引っ張り出しましたか？</div>
           <div class="thread-foot"><span class="thread-stat">❤️ 42</span><span class="thread-stat">💬 33件の返信</span><span class="thread-stat">👁 891 views</span></div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ARTICLES ══ -->
+<section class="section articles" id="articles" style="background:var(--white);">
+  <div class="sec-inner">
+    <div class="sec-eyebrow">Articles</div>
+    <h2 class="sec-title">年間720本、<br><em>知っておくべきこと</em>を記事に</h2>
+    <p class="sec-desc">AI生成記事は全文無料。専門家監修記事は有料会員が読み放題。</p>
+    <div class="art-grid">
+      <div class="art-card">
+        <div class="art-top"><span class="art-cat">お金の落とし穴</span><span class="ti-badge ti-free">無料</span></div>
+        <div class="art-title">実家を「賃貸」に出す前に、絶対に確認すべき特別控除の話</div>
+        <div class="art-desc">居住用財産の3,000万円特別控除は、賃貸に出した瞬間に使えなくなります。売却と賃貸、どちらを先に検討すべきかを解説します。</div>
+        <div class="art-cta">続きを読む →</div>
+      </div>
+      <div class="art-card">
+        <div class="art-top"><span class="art-cat">終活トラブル</span><span class="ti-badge ti-free">無料</span></div>
+        <div class="art-title">「今すぐ契約なら値引き」に潜む、遺品整理業者の典型的な手口5つ</div>
+        <div class="art-desc">即決を迫る営業トーク、不当なキャンセル料、不法投棄——実際に起きたトラブルパターンから、業者選びの注意点をまとめました。</div>
+        <div class="art-cta">続きを読む →</div>
+      </div>
+      <div class="art-card">
+        <div class="art-top"><span class="art-cat">家族のもつれ</span><span class="ti-badge ti-paid">有料</span></div>
+        <div class="art-title">「うちは仲がいいから大丈夫」が一番危ない、相続でよくある落とし穴</div>
+        <div class="art-desc">相続診断士が、実際に揉めた家庭に共通する3つのパターンと、揉める前にできる対策を解説します。</div>
+        <div class="art-cta" onclick="openModal('upgrade')" style="cursor:pointer;">続きを読む →</div>
+      </div>
+      <div class="art-card">
+        <div class="art-top"><span class="art-cat">先延ばしのツケ</span><span class="ti-badge ti-free">無料</span></div>
+        <div class="art-title">相続登記の義務化、放置すると10万円の過料も</div>
+        <div class="art-desc">2024年から義務化された相続登記。「まだ大丈夫」と放置した結果、どんなリスクが待っているのかを整理します。</div>
+        <div class="art-cta">続きを読む →</div>
+      </div>
+      <div class="art-card">
+        <div class="art-top"><span class="art-cat">待ったなしの実務</span><span class="ti-badge ti-paid">有料</span></div>
+        <div class="art-title">親が亡くなってからの2週間でやるべきこと、司法書士が解説</div>
+        <div class="art-desc">死亡届、年金の手続き、口座凍結——何から手をつければいいか分からない人のための、時系列チェックリストです。</div>
+        <div class="art-cta" onclick="openModal('upgrade')" style="cursor:pointer;">続きを読む →</div>
+      </div>
+      <div class="art-card">
+        <div class="art-top"><span class="art-cat">心理的ハードル</span><span class="ti-badge ti-free">無料</span></div>
+        <div class="art-title">実家を片付けられないのは、性格の問題じゃない</div>
+        <div class="art-desc">「捨てられない」の背景にある心理と、無理なく前に進むための小さな一歩について。</div>
+        <div class="art-cta">続きを読む →</div>
       </div>
     </div>
   </div>
@@ -600,7 +659,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,92,42,0.9
         <div class="footer-logo">Happy<em>Ending</em></div>
         <p class="footer-tagline">終活は「終わり」ではなく、<br>より豊かな「今」のための準備です。</p>
       </div>
-      <div class="footer-col"><h4>コンテンツ</h4><a>AI記事（無料）</a><a>専門家記事（有料）</a><a>デジタル終活</a><a>テンプレートDL</a></div>
+      <div class="footer-col"><h4>コンテンツ</h4><a>AI記事（無料）</a><a>専門家記事（有料）</a><a>掲示板</a><a>テンプレートDL</a></div>
       <div class="footer-col"><h4>コンテンツ</h4><a>掲示板</a><a>セミナー</a><a>1on1相談</a></div>
       <div class="footer-col"><h4>サポート</h4><a>プラン比較</a><a>よくある質問</a><a>プライバシーポリシー</a><a>利用規約</a></div>
     </div>
