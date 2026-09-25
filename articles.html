@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Ending — 終活コミュニティ</title>
+<title>Happy Ending — 記事一覧（すべて見る）</title>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap&font-display=swap" rel="stylesheet">
 <style>
 :root{
@@ -230,7 +230,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,92,42,0.9
 .art-cat{font-size:11px;color:var(--green-mid);font-weight:600;}
 .art-title{font-family:'Shippori Mincho',serif;font-size:17px;color:var(--dark);line-height:1.5;font-weight:600;}
 .art-desc{font-size:13px;color:var(--mid);line-height:1.7;flex:1;}
-.art-cta{font-size:13px;color:var(--green-mid);font-weight:600;margin-top:4px;text-decoration:none;display:inline-block;}
+.art-cta{font-size:13px;color:var(--green-mid);font-weight:600;margin-top:4px;}
 @media (max-width:768px){.art-grid{grid-template-columns:1fr!important;}}
 
 /* ── FOOTER ── */
@@ -320,22 +320,39 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,92,42,0.9
 }
 </style>
 </head>
+
+<style>
+.brow-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 32px;}
+.brow-tab{background:var(--cream);border:1px solid var(--border);border-radius:20px;padding:8px 16px;font-size:13px;color:var(--mid);cursor:pointer;font-family:'Zen Kaku Gothic New',sans-serif;}
+.brow-tab.active{background:var(--green);color:#fff;border-color:var(--green);}
+.brow-list{display:flex;flex-direction:column;gap:0;}
+.brow{padding:16px 0;border-bottom:1px solid var(--border);}
+.brow-top{display:flex;gap:10px;align-items:center;margin-bottom:6px;}
+.brow-cat{font-size:11px;color:var(--green-mid);background:var(--green-light);padding:2px 8px;border-radius:8px;}
+.brow-title{font-family:'Shippori Mincho',serif;font-size:16px;color:var(--dark);font-weight:600;}
+.brow-title-link{color:var(--dark);text-decoration:none;}
+.brow-title-link:hover{color:var(--green-mid);}
+.brow-title-plain{color:var(--dark);}
+.page-head{padding:120px 24px 20px;max-width:800px;margin:0 auto;}
+.page-inner{padding:0 24px 80px;max-width:800px;margin:0 auto;}
+</style>
+
 <body>
 
 <nav>
-  <div class="nav-logo" onclick="window.scrollTo(0,0)">
+  <a href="index.html" class="nav-logo" style="text-decoration:none;">
     <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
       <circle cx="16" cy="16" r="14.5" stroke="#C8841A" stroke-width="1.2"/>
       <path d="M8 22 Q16 8 24 22" stroke="#90E8A0" stroke-width="2" fill="none" stroke-linecap="round"/>
       <circle cx="16" cy="12" r="3" fill="#C8841A" opacity=".9"/>
     </svg>
     <span class="nav-logo-text">Happy<em>Ending</em></span>
-  </div>
+  </a>
   <div class="nav-links" id="nav-desktop">
-    <a onclick="showSection('bulletin')">掲示板</a>
-    <a onclick="showSection('articles')">記事</a>
-    <a onclick="showSection('seminar')">セミナー</a>
-    <a onclick="showSection('template')">テンプレート</a>
+    <a href="board.html">掲示板</a>
+    <a href="articles.html">記事</a>
+    <a href="index.html">セミナー</a>
+    <a href="index.html">テンプレート</a>
     <a onclick="openModal('register')">無料登録</a>
     <a class="nav-cta" onclick="openModal('upgrade')">有料会員になる</a>
   </div>
@@ -344,319 +361,144 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,92,42,0.9
   </button>
 </nav>
 <div class="nav-mobile" id="nav-mobile">
-  <a onclick="showSection('bulletin');closeMenu()">掲示板</a>
-  <a onclick="showSection('articles');closeMenu()">記事</a>
-  <a onclick="showSection('seminar');closeMenu()">セミナー</a>
-  <a onclick="showSection('template');closeMenu()">テンプレート</a>
+  <a href="board.html">掲示板</a>
+  <a href="articles.html">記事</a>
+  <a href="index.html">セミナー</a>
+  <a href="index.html">テンプレート</a>
   <a onclick="openModal('register');closeMenu()">無料登録</a>
   <a class="nav-cta-m" onclick="openModal('upgrade');closeMenu()">有料会員になる</a>
 </div>
 
-<!-- ══ HERO ══ -->
-<section class="hero" id="hero">
-  <video class="hero-video" autoplay muted loop playsinline>
-    <source src="82258_1280x720.mp4" type="video/mp4">
-  </video>
-  <div class="hero-gradient"></div>
-  <div class="hero-inner">
-    <div class="hero-left">
-      <div class="hero-eyebrow">✦ 終活コミュニティプラットフォーム</div>
-      <h1 class="hero-title" style="font-size:clamp(20px,3.5vw,58px);">「知らなかった」<br>では済まない時がくる</h1>
-      <p class="hero-catch">相続、実家じまい、遺品整理。詐欺じゃなくても、正しい手続きのつもりでも、こんなはずじゃなかったが起きる。<br>実際に経験した人に、聞いてみませんか。<br>掲示板は無料、有料会員にはセミナーや相談会も。</p>
-      
-      <div class="hero-btns">
-        <a class="btn-primary" onclick="openModal('register')">無料で始める</a>
-        <button class="btn-secondary" onclick="showSection('bulletin')">掲示板を見る</button>
-      </div>
-      <div class="hero-badges">
-        <div class="hero-badge"><div class="hero-badge-dot"></div>掲示板・AI記事は完全無料</div>
-        <div class="hero-badge"><div class="hero-badge-dot"></div>有料会員 ¥1,480/月</div>
-        <div class="hero-badge"><div class="hero-badge-dot"></div>30日間無料トライアル</div>
-      </div>
-    </div>
-    <div class="hero-right">
-      <img id="hero-photo" class="hero-photo" src="" alt="夕景" onerror="this.style.background='linear-gradient(135deg,#E8F5EE,#C8E8C0)'">
-
-      <div class="hero-price-card">
-        <div class="hpc-label">有料会員</div>
-        <div><span class="hpc-price">¥1,480</span><span class="hpc-unit">/月</span></div>
-        <div class="hpc-note">年払い ¥15,000</div>
-      </div>
-    </div>
+<div class="page-head">
+  <div class="sec-eyebrow">Articles</div>
+  <h2 class="sec-title" style="font-size:32px;">記事<em>一覧</em>（すべて見る）</h2>
+  <p class="sec-desc">年間720本。AI生成記事は無料、専門家監修記事は有料会員が読み放題です。</p>
+  <div class="brow-tabs">
+<button class="brow-tab active" onclick="filterArt('all', this)">すべて（18）</button>
+      <button class="brow-tab" onclick="filterArt('お金の落とし穴', this)">お金の落とし穴（2）</button>
+      <button class="brow-tab" onclick="filterArt('終活トラブル', this)">終活トラブル（2）</button>
+      <button class="brow-tab" onclick="filterArt('家族のもつれ', this)">家族のもつれ（2）</button>
+      <button class="brow-tab" onclick="filterArt('先延ばしのツケ', this)">先延ばしのツケ（2）</button>
+      <button class="brow-tab" onclick="filterArt('待ったなしの実務', this)">待ったなしの実務（2）</button>
+      <button class="brow-tab" onclick="filterArt('心理的ハードル', this)">心理的ハードル（2）</button>
+      <button class="brow-tab" onclick="filterArt('デジタル終活', this)">デジタル終活（2）</button>
+      <button class="brow-tab" onclick="filterArt('実家の売却・査定', this)">実家の売却・査定（2）</button>
+      <button class="brow-tab" onclick="filterArt('遺言書・相続税の基礎', this)">遺言書・相続税の基礎（2）</button>
   </div>
-</section>
-
-<!-- ══ FEATURES BAR ══ -->
-<div class="features-bar">
-  <div class="features-bar-inner">
-    <div class="fb-item">
-      <div class="fb-num">720<span class="fb-unit">本</span></div>
-      <div class="fb-desc">年間AI生成記事<br>全文無料公開</div>
-    </div>
-    <div class="fb-item">
-      <div class="fb-num">6<span class="fb-unit">カテゴリ</span></div>
-      <div class="fb-desc">終活掲示板<br>全員が投稿・返信可</div>
-    </div>
-    <div class="fb-item">
-      <div class="fb-num">¥1,480</div>
-      <div class="fb-desc">有料会員月額<br>セミナー無料参加</div>
-    </div>
-    <div class="fb-item">
-      <div class="fb-num">22<span class="fb-unit">回</span></div>
-      <div class="fb-desc">年間セミナー開催<br>東京・大阪・オンライン</div>
-    </div>
+</div>
+<div class="page-inner">
+  <div class="brow-list">
+      <div class="brow" data-cat="お金の落とし穴">
+        <div class="brow-body">
+          <div class="brow-top"><span class="ti-badge ti-free">無料</span><span class="brow-cat">お金の落とし穴</span></div>
+          <div class="brow-title"><a href="article-tokubetsu-kojo.html" class="brow-title-link">実家を「賃貸」に出す前に、絶対に確認すべき特別控除の話</a></div>
+        </div>
+      </div>
+      <div class="brow" data-cat="お金の落とし穴">
+        <div class="brow-body">
+          <div class="brow-top"><span class="ti-badge ti-paid">有料</span><span class="brow-cat">お金の落とし穴</span></div>
+          <div class="brow-title"><span class="brow-title-plain">相続税、実は「知らないと払いすぎる」人が多い理由</span></div>
+        </div>
+      </div>
+      <div class="brow" data-cat="終活トラブル">
+        <div class="brow-body">
+          <div class="brow-top"><span class="ti-badge ti-free">無料</span><span class="brow-cat">終活トラブル</span></div>
+          <div class="brow-title"><span class="brow-title-plain">「今すぐ契約なら値引き」に潜む、遺品整理業者の典型的な手口5つ</span></div>
+        </div>
+      </div>
+      <div class="brow" data-cat="終活トラブル">
+        <div class="brow-body">
+          <div class="brow-top"><span class="ti-badge ti-paid">有料</span><span class="brow-cat">終活トラブル</span></div>
+          <div class="brow-title"><span class="brow-title-plain">不用品回収の「無料」に隠されたカラクリ</span></div>
+        </div>
+      </div>
+      <div class="brow" data-cat="家族のもつれ">
+        <div class="brow-body">
+          <div class="brow-top"><span class="ti-badge ti-paid">有料</span><span class="brow-cat">家族のもつれ</span></div>
+          <div class="brow-title"><a href="article-souzoku-otoshiana.html" class="brow-title-link">「うちは仲がいいから大丈夫」が一番危ない、相続でよくある落とし穴</a></div>
+        </div>
+      </div>
+      <div class="brow" data-cat="家族のもつれ">
+        <div class="brow-body">
+          <div class="brow-top"><span class="ti-badge ti-free">無料</span><span class="brow-cat">家族のもつれ</span></div>
+          <div class="brow-title"><span class="brow-title-plain">きょうだい間で揉めやすい「3つの言い方」、専門家が指摘</span></div>
+        </div>
+      </div>
+      <div class="brow" data-cat="先延ばしのツケ">
+        <div class="brow-body">
+          <div class="brow-top"><span class="ti-badge ti-free">無料</span><span class="brow-cat">先延ばしのツケ</span></div>
+          <div class="brow-title"><span class="brow-title-plain">相続登記の義務化、放置すると10万円の過料も</span></div>
+        </div>
+      </div>
+      <div class="brow" data-cat="先延ばしのツケ">
+        <div class="brow-body">
+          <div class="brow-top"><span class="ti-badge ti-paid">有料</span><span class="brow-cat">先延ばしのツケ</span></div>
+          <div class="brow-title"><span class="brow-title-plain">空き家を放置すると固定資産税が6倍に？「特定空き家」の実態</span></div>
+        </div>
+      </div>
+      <div class="brow" data-cat="待ったなしの実務">
+        <div class="brow-body">
+          <div class="brow-top"><span class="ti-badge ti-paid">有料</span><span class="brow-cat">待ったなしの実務</span></div>
+          <div class="brow-title"><span class="brow-title-plain">親が亡くなってからの2週間でやるべきこと、司法書士が解説</span></div>
+        </div>
+      </div>
+      <div class="brow" data-cat="待ったなしの実務">
+        <div class="brow-body">
+          <div class="brow-top"><span class="ti-badge ti-free">無料</span><span class="brow-cat">待ったなしの実務</span></div>
+          <div class="brow-title"><span class="brow-title-plain">死亡届のあと、口座凍結までに何日猶予があるか</span></div>
+        </div>
+      </div>
+      <div class="brow" data-cat="心理的ハードル">
+        <div class="brow-body">
+          <div class="brow-top"><span class="ti-badge ti-free">無料</span><span class="brow-cat">心理的ハードル</span></div>
+          <div class="brow-title"><span class="brow-title-plain">実家を片付けられないのは、性格の問題じゃない</span></div>
+        </div>
+      </div>
+      <div class="brow" data-cat="心理的ハードル">
+        <div class="brow-body">
+          <div class="brow-top"><span class="ti-badge ti-paid">有料</span><span class="brow-cat">心理的ハードル</span></div>
+          <div class="brow-title"><span class="brow-title-plain">遺品整理カウンセラーに聞く、「手が止まる」時にすべきこと</span></div>
+        </div>
+      </div>
+      <div class="brow" data-cat="デジタル終活">
+        <div class="brow-body">
+          <div class="brow-top"><span class="ti-badge ti-free">無料</span><span class="brow-cat">デジタル終活</span></div>
+          <div class="brow-title"><span class="brow-title-plain">「LINEのトーク履歴、死後はどうなる？」デジタル遺産の基礎知識</span></div>
+        </div>
+      </div>
+      <div class="brow" data-cat="デジタル終活">
+        <div class="brow-body">
+          <div class="brow-top"><span class="ti-badge ti-paid">有料</span><span class="brow-cat">デジタル終活</span></div>
+          <div class="brow-title"><span class="brow-title-plain">パスワード管理アプリ、遺族はどう引き継ぐべきか</span></div>
+        </div>
+      </div>
+      <div class="brow" data-cat="実家の売却・査定">
+        <div class="brow-body">
+          <div class="brow-top"><span class="ti-badge ti-free">無料</span><span class="brow-cat">実家の売却・査定</span></div>
+          <div class="brow-title"><span class="brow-title-plain">同じ家なのに、査定額が3社で270万円も違った理由</span></div>
+        </div>
+      </div>
+      <div class="brow" data-cat="実家の売却・査定">
+        <div class="brow-body">
+          <div class="brow-top"><span class="ti-badge ti-paid">有料</span><span class="brow-cat">実家の売却・査定</span></div>
+          <div class="brow-title"><span class="brow-title-plain">不動産鑑定士が教える、「高く売れる家」の共通点</span></div>
+        </div>
+      </div>
+      <div class="brow" data-cat="遺言書・相続税の基礎">
+        <div class="brow-body">
+          <div class="brow-top"><span class="ti-badge ti-free">無料</span><span class="brow-cat">遺言書・相続税の基礎</span></div>
+          <div class="brow-title"><span class="brow-title-plain">自筆証書遺言、9割が「形式不備」で無効になる現実</span></div>
+        </div>
+      </div>
+      <div class="brow" data-cat="遺言書・相続税の基礎">
+        <div class="brow-body">
+          <div class="brow-top"><span class="ti-badge ti-paid">有料</span><span class="brow-cat">遺言書・相続税の基礎</span></div>
+          <div class="brow-title"><span class="brow-title-plain">相続税の基礎控除、正しい計算方法</span></div>
+        </div>
+      </div>
   </div>
 </div>
 
-<!-- ══ BULLETIN ══ -->
-<section class="section bulletin" id="bulletin">
-  <div class="sec-inner">
-    <div class="sec-eyebrow">Bulletin Board</div>
-    <h2 class="sec-title">終活<em>掲示板</em></h2>
-    <p class="sec-desc">同じ悩みを持つ仲間に質問・相談できる場所。<br>投稿・返信は全員無料です。</p>
-    <div class="board-layout">
-      <div>
-        <div class="board-sidebar-title">カテゴリ</div>
-        <div class="board-cat active" onclick="setActive(this)"><div class="bc-dot" style="background:#2E8B5A"></div><span class="bc-name">すべて</span><span class="bc-count">1,469</span></div>
-        <div class="board-cat" onclick="setActive(this)"><div class="bc-dot" style="background:#5AAA70"></div><span class="bc-name">お金の落とし穴</span><span class="bc-count">356</span></div>
-        <div class="board-cat" onclick="setActive(this)"><div class="bc-dot" style="background:#C8841A"></div><span class="bc-name">終活トラブル</span><span class="bc-count">298</span></div>
-        <div class="board-cat" onclick="setActive(this)"><div class="bc-dot" style="background:#2E8B5A"></div><span class="bc-name">家族のもつれ</span><span class="bc-count">245</span></div>
-        <div class="board-cat" onclick="setActive(this)"><div class="bc-dot" style="background:#5AAA70"></div><span class="bc-name">先延ばしのツケ</span><span class="bc-count">187</span></div>
-        <div class="board-cat" onclick="setActive(this)"><div class="bc-dot" style="background:#C8841A"></div><span class="bc-name">待ったなしの実務</span><span class="bc-count">142</span></div>
-        <div class="board-cat" onclick="setActive(this)"><div class="bc-dot" style="background:#2E8B5A"></div><span class="bc-name">心理的ハードル</span><span class="bc-count">98</span></div>
-        <div class="board-cat" onclick="setActive(this)"><div class="bc-dot" style="background:#5AAA70"></div><span class="bc-name">デジタル終活</span><span class="bc-count">62</span></div>
-        <div class="board-cat" onclick="setActive(this)"><div class="bc-dot" style="background:#C8841A"></div><span class="bc-name">実家の売却・査定</span><span class="bc-count">54</span></div>
-        <div class="board-cat" onclick="setActive(this)"><div class="bc-dot" style="background:#2E8B5A"></div><span class="bc-name">遺言書・相続税の基礎</span><span class="bc-count">47</span></div>
-      </div>
-      <div>
-        <button class="board-new" onclick="openModal('register')">
-          <span class="board-new-placeholder">💬 あなたの悩みや質問を投稿する...</span>
-          <span class="board-new-btn">スレッドを立てる</span>
-        </button>
-        <div class="thread">
-          <div class="thread-head">
-            <div class="thread-av-placeholder" style="background:#E8F5EE;">🍋</div>
-            <div><div class="thread-author">れもん湯</div><div class="thread-time">2時間前</div></div>
-            <span class="thread-cat">お金の落とし穴</span>
-          </div>
-          <div class="thread-title">「特別控除が使えなくなっています」と言われました</div>
-          <div class="thread-preview">父が亡くなり、空き家になった実家を賃貸に出そうとしたら、不動産の担当者から「先に売却しておけば使えた特別控除が、賃貸に出した時点で消えます」と言われました。同じような失敗をした方、いらっしゃいますか？</div>
-          <div class="thread-foot"><span class="thread-stat">❤️ 24</span><span class="thread-stat">💬 18件の返信</span><span class="thread-stat">👁 342 views</span></div>
-        </div>
-        <div class="thread">
-          <div class="thread-head">
-            <div class="thread-av-placeholder" style="background:#FDF8E8;">🐈‍⬛</div>
-            <div><div class="thread-author">灰色の猫</div><div class="thread-time">5時間前</div></div>
-            <span class="thread-cat">待ったなしの実務</span>
-          </div>
-          <div class="thread-title">死亡届を出したのに、相続の手続きは何も教えてもらえませんでした</div>
-          <div class="thread-preview">「これで役所が案内してくれるだろう」と思っていたら、渡されたのは年金と保険の書類だけ。銀行の解約も、実家の名義変更も、全部自分で調べることに。皆さんはどう乗り切りましたか？</div>
-          <div class="thread-foot"><span class="thread-stat">❤️ 31</span><span class="thread-stat">💬 25件の返信</span><span class="thread-stat">👁 518 views</span></div>
-        </div>
-        <div class="thread">
-          <div class="thread-head">
-            <div class="thread-av-placeholder" style="background:#E8F5EE;">☕</div>
-            <div><div class="thread-author">朝のコーヒー</div><div class="thread-time">昨日</div></div>
-            <span class="thread-cat">家族のもつれ</span>
-          </div>
-          <div class="thread-title">弟が「まだ元気だから大丈夫」と話し合いに応じてくれません</div>
-          <div class="thread-preview">実家の相続の話をしたいのに、離れて暮らす弟は「考えすぎ」と取り合ってくれず、一人で抱え込んでいます。皆さんはどうやってきょうだいを話し合いの場に引っ張り出しましたか？</div>
-          <div class="thread-foot"><span class="thread-stat">❤️ 42</span><span class="thread-stat">💬 33件の返信</span><span class="thread-stat">👁 891 views</span></div>
-        </div>
-        <a href="board.html" style="display:block;text-align:center;margin-top:16px;padding:14px;border:1px solid var(--border);border-radius:8px;color:var(--green-mid);font-size:14px;font-weight:600;text-decoration:none;">掲示板をすべて見る（1,469件）→</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ ARTICLES ══ -->
-<section class="section articles" id="articles" style="background:var(--white);">
-  <div class="sec-inner">
-    <div class="sec-eyebrow">Articles</div>
-    <h2 class="sec-title">年間720本、<br><em>知っておくべきこと</em>を記事に</h2>
-    <p class="sec-desc">AI生成記事は全文無料。専門家監修記事は有料会員が読み放題。</p>
-    <p style="font-size:13px;color:var(--mid);margin-top:-4px;">※同じジャンルでも、無料記事と有料記事があります（例：お金の落とし穴）</p>
-    <div class="art-grid">
-      <div class="art-card">
-        <div class="art-top"><span class="art-cat">お金の落とし穴</span><span class="ti-badge ti-free">無料・AI生成</span></div>
-        <div class="art-title">実家を「賃貸」に出す前に、絶対に確認すべき特別控除の話</div>
-        <div class="art-desc">居住用財産の3,000万円特別控除は、賃貸に出した瞬間に使えなくなります。売却と賃貸、どちらを先に検討すべきかを解説します。</div>
-        <a href="article-tokubetsu-kojo.html" class="art-cta">続きを読む →</a>
-      </div>
-      <div class="art-card">
-        <div class="art-top"><span class="art-cat">お金の落とし穴</span><span class="ti-badge ti-paid">有料・専門家監修</span></div>
-        <div class="art-title">相続税、実は「知らないと払いすぎる」人が多い理由</div>
-        <div class="art-desc">税理士が、申告時によくある計算ミス・控除の見落としパターンを解説。同じジャンルでも、AI記事より一段踏み込んだ内容です。</div>
-        <div class="art-cta" onclick="openModal('upgrade')" style="cursor:pointer;">続きを読む →</div>
-      </div>
-      <div class="art-card">
-        <div class="art-top"><span class="art-cat">終活トラブル</span><span class="ti-badge ti-free">無料・AI生成</span></div>
-        <div class="art-title">「今すぐ契約なら値引き」に潜む、遺品整理業者の典型的な手口5つ</div>
-        <div class="art-desc">即決を迫る営業トーク、不当なキャンセル料、不法投棄——実際に起きたトラブルパターンから、業者選びの注意点をまとめました。</div>
-        <div class="art-cta">続きを読む →</div>
-      </div>
-      <div class="art-card">
-        <div class="art-top"><span class="art-cat">家族のもつれ</span><span class="ti-badge ti-paid">有料・専門家監修</span></div>
-        <div class="art-title">「うちは仲がいいから大丈夫」が一番危ない、相続でよくある落とし穴</div>
-        <div class="art-desc">相続診断士が、実際に揉めた家庭に共通する3つのパターンと、揉める前にできる対策を解説します。</div>
-        <a href="article-souzoku-otoshiana.html" class="art-cta">続きを読む →</a>
-      </div>
-      <div class="art-card">
-        <div class="art-top"><span class="art-cat">デジタル終活</span><span class="ti-badge ti-free">無料・AI生成</span></div>
-        <div class="art-title">「LINEのトーク履歴、死後はどうなる？」デジタル遺産の基礎知識</div>
-        <div class="art-desc">SNSアカウント、サブスク、ネット銀行——目に見えない「デジタル資産」は、遺族が気づかないまま放置されがちです。</div>
-        <div class="art-cta">続きを読む →</div>
-      </div>
-      <div class="art-card">
-        <div class="art-top"><span class="art-cat">実家の売却・査定</span><span class="ti-badge ti-free">無料・AI生成</span></div>
-        <div class="art-title">同じ家なのに、査定額が3社で270万円も違った理由</div>
-        <div class="art-desc">不動産会社によって査定額が大きく変わるのはなぜか。複数社に依頼すべき理由と、比較する際のポイントを解説します。</div>
-        <div class="art-cta">続きを読む →</div>
-      </div>
-    </div>
-    <a href="articles.html" style="display:block;text-align:center;margin-top:24px;padding:14px;border:1px solid var(--border);border-radius:8px;color:var(--green-mid);font-size:14px;font-weight:600;text-decoration:none;">記事をすべて見る（720本）→</a>
-  </div>
-</section>
-
-<!-- ══ SEMINAR ══ -->
-<section class="section seminar" id="seminar">
-  <div class="sec-inner">
-    <div class="sec-eyebrow">Seminar</div>
-    <h2 class="sec-title">相続・実家じまいのプロから学ぶ<br><em>実践セミナー</em></h2>
-    <p class="sec-desc">有料会員は全セミナーに無料参加＋アーカイブ視聴可。<br>監修者が顔出しで登壇。</p>
-    <div class="seminar-grid">
-      <div class="seminar-card">
-        <img id="seminar-photo1" class="seminar-photo" src="" alt="オンラインセミナー">
-        <div class="seminar-body">
-          <div class="seminar-type">Online · Zoom</div>
-          <div class="seminar-title">オンラインセミナー<br>月1回・先着50〜100名</div>
-          <div class="seminar-detail">弁護士・FP・葬儀師などのプロが顔出しで登壇。「親への切り出し方」「実家じまい」など、毎月テーマを変えて開催。</div>
-          <span class="seminar-badge">Y1〜 毎月開催</span>
-        </div>
-        <div class="seminar-foot">
-          <div class="seminar-price">有料会員 <strong>無料</strong></div>
-          <button class="seminar-btn" onclick="openModal('upgrade')">参加する</button>
-        </div>
-      </div>
-      <div class="seminar-card">
-        <img id="seminar-photo2" class="seminar-photo" src="" alt="東京オフライン">
-        <div class="seminar-body">
-          <div class="seminar-type">Tokyo · Offline</div>
-          <div class="seminar-title">東京オフラインセミナー<br>隔月・貸会議室</div>
-          <div class="seminar-detail">各月で開催予定。専門家との直接交流も可能。少人数制で深い学びを提供。</div>
-          <span class="seminar-badge">Y1〜 隔月開催</span>
-        </div>
-        <div class="seminar-foot">
-          <div class="seminar-price">有料会員 <strong>無料</strong> / 非会員 ¥3,000〜</div>
-          <button class="seminar-btn" onclick="openModal('upgrade')">参加する</button>
-        </div>
-      </div>
-      <div class="seminar-card">
-        <img id="seminar-photo3" class="seminar-photo" src="" alt="大阪オフライン">
-        <div class="seminar-body">
-          <div class="seminar-type">Osaka · Offline</div>
-          <div class="seminar-title">大阪オフラインセミナー<br>年4回・貸会議室</div>
-          <div class="seminar-detail">Y2より大阪でも開催。関西エリアの有料会員向け。東京と同水準のプロが登壇。</div>
-          <span class="seminar-badge">Y2〜 年4回</span>
-        </div>
-        <div class="seminar-foot">
-          <div class="seminar-price">有料会員 <strong>無料</strong> / 非会員 ¥3,000〜</div>
-          <button class="seminar-btn">Y2から開始</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ PLANS ══ -->
-<section class="section plans">
-  <div class="sec-inner">
-    <div style="text-align:center;max-width:540px;margin:0 auto;">
-      <div class="sec-eyebrow">Membership</div>
-      <h2 class="sec-title">まずは<em>無料</em>から<br>始められる</h2>
-      <p class="sec-desc" style="margin:0 auto;">掲示板は全員無料。有料会員（¥1,480/月）になるとセミナー・プロ記事が開放されます。</p>
-    </div>
-    <div class="plans-grid">
-      <div class="plan-card plan-free">
-        <div class="plan-name">無料会員</div>
-        <div class="plan-price">¥0</div>
-        <div class="plan-period">ずっと無料</div>
-        <ul class="plan-feats">
-          <li>✅ 掲示板 投稿・返信</li>
-          <li>✅ AI記事 全文</li>
-          <li>✅ テンプレート基本版DL</li>
-          <li>✅ 親のデジタル資産チェックリスト</li>
-          <li><span style="opacity:.3">❌</span> <span style="opacity:.45">セミナー参加</span></li>
-          <li><span style="opacity:.3">❌</span> <span style="opacity:.45">専門家監修記事</span></li>
-        </ul>
-        <button class="plan-btn pbn-outline" onclick="openModal('register')">無料で登録</button>
-      </div>
-      <div class="plan-card plan-paid">
-        <div class="plan-hot">おすすめ</div>
-        <div class="plan-name">有料会員</div>
-        <div class="plan-price">¥1,480</div>
-        <div class="plan-period">/月（年払い ¥15,000）</div>
-        <ul class="plan-feats">
-          <li>✅ 掲示板（無料と同じ）</li>
-          <li>✅ 専門家監修記事 読み放題</li>
-          <li>✅ セミナー 無料参加＋アーカイブ</li>
-          <li>✅ テンプレート詳細版DL</li>
-          <li>✅ 専門家への問い合わせ</li>
-        </ul>
-        <button class="plan-btn pbn-gold" onclick="openModal('upgrade')">30日間無料で始める</button>
-      </div>
-      <div class="plan-card plan-opt">
-        <div class="plan-name">別途課金オプション</div>
-        <div class="plan-price">別途</div>
-        <div class="plan-period">必要な時に追加</div>
-        <ul class="plan-feats">
-          <li>🎯 1on1相談 ¥5,000〜/30分</li>
-          <li>🏛️ オフラインセミナー ¥3,000〜</li>
-          <li>📄 テンプレート単品 ¥500〜</li>
-        </ul>
-        <button class="plan-btn pbn-outline">詳細を見る</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ TEMPLATE ══ -->
-<section class="section template" id="template">
-  <div class="sec-inner">
-    <div class="sec-eyebrow">Templates</div>
-    <h2 class="sec-title">プロが監修した<br><em>信頼のテンプレート</em></h2>
-    <div class="template-layout">
-      <img id="tmpl-photo" class="template-photo" src="" alt="富士山と花畑">
-      <div class="template-content-grid"><div class="template-content">
-        <div class="template-section">
-          <div class="template-section-title">無料DL（メール登録で入手）</div>
-          <div class="template-item"><span class="ti-badge ti-free">無料</span><span class="ti-name">エンディングノート（基本版PDF）</span></div>
-          <div class="template-item"><span class="ti-badge ti-free">無料</span><span class="ti-name">親のデジタル資産チェックリスト</span></div>
-          <div class="template-item"><span class="ti-badge ti-free">無料</span><span class="ti-name">実家じまいチェックリスト</span></div>
-          <div class="template-item"><span class="ti-badge ti-free">無料</span><span class="ti-name">葬儀社比較シート</span></div>
-        </div>
-        <div class="template-section">
-          <div class="template-section-title">有料会員限定DL（監修者名入り）</div>
-          <div class="template-item"><span class="ti-badge ti-paid">有料</span><span class="ti-name">遺言書テンプレート（弁護士監修）</span></div>
-          <div class="template-item"><span class="ti-badge ti-paid">有料</span><span class="ti-name">エンディングノート（詳細版）</span></div>
-          <div class="template-item"><span class="ti-badge ti-paid">有料</span><span class="ti-name">相続手続きフローチャート</span></div>
-          <div class="template-item"><span class="ti-badge ti-paid">有料</span><span class="ti-name">相続手続きの落とし穴チェックリスト</span></div>
-        </div>
-        <button class="btn-primary" onclick="openModal('register')">無料テンプレートをDLする</button>
-      </div>
-      <div style="display:flex;flex-direction:column;justify-content:center;gap:20px;padding:20px;background:var(--green-light);border-radius:16px;">
-        <div style="font-family:'Shippori Mincho',serif;font-size:22px;color:var(--green);font-weight:500;">無料会員でも使える<br>テンプレートも用意</div>
-        <p style="font-size:14px;color:var(--mid);line-height:1.9;">監修者の名前入りで信頼性を担保。弁護士・FP・葬儀師が監修した「使えるテンプレート」を展開。他のWebサービスには真似できない差別化です。</p>
-        <div style="font-family:'Shippori Mincho',serif;font-size:32px;color:var(--gold);">7種類</div>
-        <div style="font-size:13px;color:var(--mid);">無料〜有料会員限定まで<br>幅広いテンプレートを用意</div>
-      </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ══ FOOTER ══ -->
 <footer class="footer">
   <img id="footer-photo" class="footer-photo" src="" alt="星空">
   <div class="footer-overlay"></div>
@@ -676,7 +518,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,92,42,0.9
     <span class="footer-copy">決済・個人情報はStripeにて安全に管理</span>
   </div>
 </footer>
-
 <!-- ══ MODALS ══ -->
 <div class="modal-overlay" id="modal-register">
   <div class="modal">
@@ -784,5 +625,20 @@ function setActive(el) {
   el.classList.add('active');
 }
 </script>
+
+<script>
+function filterArt(cat, el) {
+  document.querySelectorAll('.brow-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('.brow').forEach(row => {
+    if (cat === 'all' || row.dataset.cat === cat) {
+      row.style.display = 'block';
+    } else {
+      row.style.display = 'none';
+    }
+  });
+}
+</script>
+
 </body>
 </html>
